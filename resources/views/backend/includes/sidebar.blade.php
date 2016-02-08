@@ -41,6 +41,10 @@
                 </li>
             @endauth
 
+            <li class="{{ Active::pattern('admin/access/*') }}">
+                <a href="{!!url('admin/access/categories')!!}"><span>{{ trans('menus.backend.access.categories.title') }}</span></a>
+            </li>
+
             <li class="{{ Active::pattern('admin/log-viewer*') }} treeview">
                 <a href="#">
                     <span>{{ trans('menus.backend.log-viewer.main') }}</span>

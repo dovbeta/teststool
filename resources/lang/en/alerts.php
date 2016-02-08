@@ -41,6 +41,12 @@ return [
             'restored' => 'The user was successfully restored.',
             'updated' => 'The user was successfully updated.',
             'updated_password' => "The user's password was successfully updated.",
+        ],
+
+        'categories' => [
+            'created' => 'The category was successfully created.',
+            'deleted' => 'The category was successfully deleted.',
+            'updated' => 'The category was successfully updated.',
         ]
     ],
 ];

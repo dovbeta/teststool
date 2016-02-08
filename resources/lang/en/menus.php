@@ -48,6 +48,14 @@ return [
                 'edit' => 'Edit User',
                 'main' => 'Users',
             ],
+
+            'categories' => [
+                'title' => 'Categories',
+                'all' => 'All Categories',
+                'create' => 'Create Category',
+                'edit' => 'Edit Category',
+                'main' => 'Categories',
+            ],
         ],
 
         'log-viewer' => [

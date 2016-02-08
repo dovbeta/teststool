@@ -120,6 +120,19 @@ return [
                     'total' => 'user total|users total',
                 ],
             ],
+
+            'categories' => [
+                'management' => 'Categories Management',
+                'all' => 'All Categories',
+                'create' => 'Create Category',
+
+                'table' => [
+                    'id' => 'ID',
+                    'name' => 'Name',
+                    'code' => 'Code',
+                    'total' => 'category total|categories total',
+                ],
+            ],
         ],
     ],
 

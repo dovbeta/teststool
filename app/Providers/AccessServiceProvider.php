@@ -80,6 +80,11 @@ class AccessServiceProvider extends ServiceProvider
         );
 
         $this->app->bind(
+            \App\Repositories\Backend\Category\CategoryContract::class,
+            \App\Repositories\Backend\Category\EloquentCategoryRepository::class
+        );
+
+        $this->app->bind(
             \App\Repositories\Backend\Role\RoleRepositoryContract::class,
             \App\Repositories\Backend\Role\EloquentRoleRepository::class
         );
