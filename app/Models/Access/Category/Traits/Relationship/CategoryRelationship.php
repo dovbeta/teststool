@@ -1,14 +1,15 @@
 <?php
 
-namespace App\Models\Access\User\Traits\Relationship;
+namespace App\Models\Access\Category\Traits\Relationship;
 
-use App\Models\Access\User\SocialLogin;
+use App\Models\Access\Category\SocialLogin;
+use App\Models\Access\Question\Question;
 
 /**
- * Class UserRelationship
- * @package App\Models\Access\User\Traits\Relationship
+ * Class CategoryRelationship
+ * @package App\Models\Access\Category\Traits\Relationship
  */
-trait UserRelationship
+trait CategoryRelationship
 {
 
     /**
@@ -35,8 +36,8 @@ trait UserRelationship
     /**
      * @return mixed
      */
-    public function providers()
+    public function questions()
     {
-        return $this->hasMany(SocialLogin::class);
+        return $this->hasMany(Question::class);
     }
 }

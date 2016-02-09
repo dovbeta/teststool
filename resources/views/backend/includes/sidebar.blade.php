@@ -36,13 +36,17 @@
             </li>
 
             @permission('view-access-management')
-                <li class="{{ Active::pattern('admin/access/*') }}">
+                <li class="{{ Active::pattern('admin/access/users/*') }}">
                     <a href="{!!url('admin/access/users')!!}"><span>{{ trans('menus.backend.access.title') }}</span></a>
                 </li>
             @endauth
 
-            <li class="{{ Active::pattern('admin/access/*') }}">
+            <li class="{{ Active::pattern('admin/access/categories*') }}">
                 <a href="{!!url('admin/access/categories')!!}"><span>{{ trans('menus.backend.access.categories.title') }}</span></a>
+            </li>
+
+            <li class="{{ Active::pattern('admin/access/questions*') }}">
+                <a href="{!!url('admin/access/questions')!!}"><span>{{ trans('menus.backend.access.questions.title') }}</span></a>
             </li>
 
             <li class="{{ Active::pattern('admin/log-viewer*') }} treeview">

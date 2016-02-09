@@ -53,8 +53,3 @@
 
     {!! Form::close() !!}
 @stop
-
-@section('after-scripts-end')
-    {!! Html::script('js/backend/access/permissions/script.js') !!}
-    {!! Html::script('js/backend/access/users/script.js') !!}
-@stop

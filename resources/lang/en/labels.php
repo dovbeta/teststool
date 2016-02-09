@@ -133,6 +133,19 @@ return [
                     'total' => 'category total|categories total',
                 ],
             ],
+
+            'questions' => [
+                'management' => 'Question management',
+                'all' => 'All questions',
+                'create' => 'Create question',
+
+                'table' => [
+                    'id' => 'ID',
+                    'title' => 'Title',
+                    'description' => 'Description',
+                    'total' => 'question total|questions total',
+                ],
+            ],
         ],
     ],
 

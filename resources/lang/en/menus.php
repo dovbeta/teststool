@@ -56,6 +56,14 @@ return [
                 'edit' => 'Edit Category',
                 'main' => 'Categories',
             ],
+
+            'questions' => [
+                'title' => 'Questions',
+                'all' => 'All questions',
+                'create' => 'Create question',
+                'edit' => 'Edit question',
+                'main' => 'Questions',
+            ],
         ],
 
         'log-viewer' => [

@@ -146,6 +146,12 @@ return [
                     'name' => 'Name',
                     'code' => 'Code',
                 ],
+
+                'questions' => [
+                    'title' => 'Title',
+                    'description' => 'Description',
+                    'categories' => 'Categories',
+                ],
             ],
         ],
 

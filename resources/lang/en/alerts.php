@@ -47,6 +47,12 @@ return [
             'created' => 'The category was successfully created.',
             'deleted' => 'The category was successfully deleted.',
             'updated' => 'The category was successfully updated.',
-        ]
+        ],
+
+        'questions' => [
+            'created' => 'The question was successfully created.',
+            'deleted' => 'The question was successfully deleted.',
+            'updated' => 'The question was successfully updated.',
+        ],
     ],
 ];
