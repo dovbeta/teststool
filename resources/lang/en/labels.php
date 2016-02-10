@@ -122,9 +122,10 @@ return [
             ],
 
             'categories' => [
-                'management' => 'Categories Management',
-                'all' => 'All Categories',
-                'create' => 'Create Category',
+                'management' => 'Categories management',
+                'all' => 'All categories',
+                'create' => 'Create category',
+                'edit' => 'Edit category',
 
                 'table' => [
                     'id' => 'ID',
@@ -138,6 +139,7 @@ return [
                 'management' => 'Question management',
                 'all' => 'All questions',
                 'create' => 'Create question',
+                'edit' => 'Edit question',
 
                 'table' => [
                     'id' => 'ID',

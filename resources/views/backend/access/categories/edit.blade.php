@@ -1,20 +1,20 @@
 @extends ('backend.layouts.master')
 
-@section ('title', trans('labels.backend.access.categories.management') . ' | ' . trans('labels.backend.access.categories.create'))
+@section ('title', trans('labels.backend.access.categories.management') . ' | ' . trans('labels.backend.access.categories.edit'))
 
 @section('page-header')
     <h1>
         {{ trans('labels.backend.access.categories.management') }}
-        <small>{{ trans('labels.backend.access.categories.create') }}</small>
+        <small>{{ trans('labels.backend.access.categories.edit') }}</small>
     </h1>
 @endsection
 
 @section('content')
-    {!! Form::open(['route' => 'admin.access.categories.store', 'class' => 'form-horizontal', 'role' => 'form', 'method' => 'post']) !!}
+    {!! Form::model($category, ['route' => ['admin.access.categories.update', $category->id], 'class' => 'form-horizontal', 'role' => 'form', 'method' => 'PATCH']) !!}
 
         <div class="box box-success">
             <div class="box-header with-border">
-                <h3 class="box-title">{{ trans('labels.backend.access.categories.create') }}</h3>
+                <h3 class="box-title">{{ trans('labels.backend.access.categories.edit') }}</h3>
 
                 <div class="box-tools pull-right">
                     @include('backend.access.categories.partials.header-buttons')
@@ -25,14 +25,14 @@
                 <div class="form-group">
                     {!! Form::label('name', trans('validation.attributes.backend.access.categories.name'), ['class' => 'col-lg-2 control-label']) !!}
                     <div class="col-lg-10">
-                        {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => trans('validation.attributes.backend.access.categories.name')]) !!}
+                        {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => trans('validation.attributes.backend.access.users.name')]) !!}
                     </div>
                 </div><!--form control-->
 
                 <div class="form-group">
                     {!! Form::label('code', trans('validation.attributes.backend.access.categories.code'), ['class' => 'col-lg-2 control-label']) !!}
                     <div class="col-lg-10">
-                        {!! Form::text('code', null, ['class' => 'form-control', 'placeholder' => trans('validation.attributes.backend.access.categories.code')]) !!}
+                        {!! Form::text('code', null, ['class' => 'form-control', 'placeholder' => trans('validation.attributes.backend.access.users.email')]) !!}
                     </div>
                 </div><!--form control-->
             </div><!-- /.box-body -->
@@ -45,7 +45,7 @@
                 </div>
 
                 <div class="pull-right">
-                    <input type="submit" class="btn btn-success btn-xs" value="{{ trans('buttons.general.crud.create') }}" />
+                    <input type="submit" class="btn btn-success btn-xs" value="{{ trans('buttons.general.crud.update') }}" />
                 </div>
                 <div class="clearfix"></div>
             </div><!-- /.box-body -->

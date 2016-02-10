@@ -3,6 +3,7 @@
 namespace App\Repositories\Backend\Category;
 
 use App\Exceptions\GeneralException;
+use App\Http\Requests\Backend\Access\Category\UpdateCategoryRequest;
 use App\Models\Access\Category\Category;
 use App\Repositories\Backend\Role\RoleRepositoryContract;
 use App\Exceptions\Backend\Access\User\UserNeedsRolesException;
@@ -17,11 +18,10 @@ class EloquentCategoryRepository implements CategoryContract
 
     /**
      * @param  $id
-     * @param  bool               $withRoles
      * @throws GeneralException
      * @return mixed
      */
-    public function findOrThrowException($id, $withRoles = false)
+    public function findOrThrowException($id)
     {
         $category = Category::find($id);
 
@@ -71,5 +71,37 @@ class EloquentCategoryRepository implements CategoryContract
 
     public function getAllCategories() {
         return Category::all();
+    }
+
+    /**
+     * @param  int $id
+     * @param  UpdateCategoryRequest $request
+     * @throws GeneralException
+     * @return bool
+     */
+    public function update($id, $request)
+    {
+        $category = $this->findOrThrowException($id);
+
+        if ($category->update($request->toArray())) {
+            return true;
+        }
+
+        throw new GeneralException(trans('exceptions.backend.access.categories.update_error'));
+    }
+
+    /**
+     * @param  $id
+     * @throws GeneralException
+     * @return bool
+     */
+    public function destroy($id)
+    {
+        $category = $this->findOrThrowException($id);
+        if ($category->delete()) {
+            return true;
+        }
+
+        throw new GeneralException(trans('exceptions.backend.access.categories.delete_error'));
     }
 }

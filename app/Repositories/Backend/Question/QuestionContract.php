@@ -21,6 +21,13 @@ interface QuestionContract
     public function getQuestionsPaginated($per_page);
 
     /**
+     * @param int $id
+     * @param $request
+     * @return mixed
+     */
+    public function update($id, $request);
+
+    /**
      * @param  $id
      * @return mixed
      */

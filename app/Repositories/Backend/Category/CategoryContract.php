@@ -27,4 +27,17 @@ interface CategoryContract
      */
     public function getAllCategories();
 
+    /**
+     * @param int $id
+     * @param $request
+     * @return mixed
+     */
+    public function update($id, $request);
+
+    /**
+     * @param  $id
+     * @return mixed
+     */
+    public function destroy($id);
+
 }

@@ -6,7 +6,9 @@ use App\Http\Requests\Backend\Access\Category\CreateCategoryRequest;
 use App\Http\Requests\Backend\Access\Category\StoreCategoryRequest;
 use App\Http\Requests\Backend\Access\Question\CreateQuestionRequest;
 use App\Http\Requests\Backend\Access\Question\DeleteQuestionRequest;
+use App\Http\Requests\Backend\Access\Question\EditQuestionRequest;
 use App\Http\Requests\Backend\Access\Question\StoreQuestionRequest;
+use App\Http\Requests\Backend\Access\Question\UpdateQuestionRequest;
 use App\Models\Access\Question\Question;
 use App\Repositories\Backend\Category\CategoryContract;
 use App\Repositories\Backend\Question\QuestionContract;
@@ -66,6 +68,31 @@ class QuestionController extends Controller
     {
         $this->questions->create($request);
         return redirect()->route('admin.access.questions.index')->withFlashSuccess(trans('alerts.backend.questions.created'));
+    }
+
+    /**
+     * @param  $id
+     * @param  EditQuestionRequest $request
+     * @return mixed
+     */
+    public function edit($id, EditQuestionRequest $request)
+    {
+        $question = $this->questions->findOrThrowException($id);
+        return view('backend.access.questions.edit')
+            ->withQuestion($question)
+            ->withQuestionCategories($question->categories()->lists('id')->all())
+            ->withCategories($this->categories->getAllCategories());
+    }
+
+    /**
+     * @param  $id
+     * @param  UpdateQuestionRequest $request
+     * @return mixed
+     */
+    public function update($id, UpdateQuestionRequest $request)
+    {
+        $this->questions->update($id, $request);
+        return redirect()->route('admin.access.questions.index')->withFlashSuccess(trans('alerts.backend.questions.updated'));
     }
 
     /**

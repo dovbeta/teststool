@@ -58,7 +58,7 @@ class EloquentQuestionRepository implements QuestionContract
 
     /**
      * @param  $input
-     * @return mixed
+     * @return Question
      */
     private function createQuestionStub($input)
     {
@@ -66,6 +66,24 @@ class EloquentQuestionRepository implements QuestionContract
         $question->title          = $input['title'];
         $question->description          = $input['description'];
         return $question;
+    }
+
+    /**
+     * @param  int $id
+     * @param  UpdateQuestionRequest $request
+     * @throws GeneralException
+     * @return bool
+     */
+    public function update($id, $request)
+    {
+        $question = $this->findOrThrowException($id);
+
+        if ($question->update($request->toArray())) {
+            $this->flushCategories($request->only('question_categories'), $question);
+            return true;
+        }
+
+        throw new GeneralException(trans('exceptions.backend.access.questions.update_error'));
     }
 
     /**
@@ -81,5 +99,15 @@ class EloquentQuestionRepository implements QuestionContract
         }
 
         throw new GeneralException(trans('exceptions.backend.access.questions.delete_error'));
+    }
+
+    /**
+     * @param $categories
+     * @param Question $question
+     */
+    private function flushCategories($categories, $question)
+    {
+        $question->detachCategories($question->categories);
+        $question->attachCategories($categories);
     }
 }

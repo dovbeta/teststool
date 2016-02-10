@@ -40,7 +40,7 @@ trait QuestionRelationship
     /**
      * Alias to eloquent many-to-many relation's detach() method.
      *
-     * @param  mixed  $role
+     * @param  mixed  $category
      * @return void
      */
     public function detachCategory($category)
@@ -77,7 +77,7 @@ trait QuestionRelationship
      * @param  mixed  $categories
      * @return void
      */
-    public function detachRoles($categories)
+    public function detachCategories($categories)
     {
         foreach ($categories as $category) {
             $this->detachCategory($category);
