@@ -48,6 +48,10 @@ return [
                 'edit' => 'Edit User',
                 'main' => 'Users',
             ],
+        ],
+
+        'quiz' => [
+            'main' => 'Quiz',
 
             'categories' => [
                 'title' => 'Categories',

@@ -141,7 +141,9 @@ return [
                     'password_confirmation' => 'Password Confirmation',
                     'send_confirmation_email' => 'Send Confirmation E-mail',
                 ],
+            ],
 
+            'quiz' => [
                 'categories' => [
                     'name' => 'Name',
                     'code' => 'Code',
@@ -152,7 +154,7 @@ return [
                     'description' => 'Description',
                     'categories' => 'Categories',
                 ],
-            ],
+            ]
         ],
 
         'frontend' => [

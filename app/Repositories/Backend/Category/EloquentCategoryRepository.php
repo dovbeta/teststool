@@ -3,11 +3,8 @@
 namespace App\Repositories\Backend\Category;
 
 use App\Exceptions\GeneralException;
-use App\Http\Requests\Backend\Access\Category\UpdateCategoryRequest;
-use App\Models\Access\Category\Category;
-use App\Repositories\Backend\Role\RoleRepositoryContract;
-use App\Exceptions\Backend\Access\User\UserNeedsRolesException;
-use App\Repositories\Frontend\User\UserContract as FrontendUserContract;
+use App\Http\Requests\Backend\Quiz\Category\UpdateCategoryRequest;
+use App\Models\Quiz\Category\Category;
 
 /**
  * Class EloquentCategoryRepository
@@ -29,7 +26,7 @@ class EloquentCategoryRepository implements CategoryContract
             return $category;
         }
 
-        throw new GeneralException(trans('exceptions.backend.access.categories.not_found'));
+        throw new GeneralException(trans('exceptions.backend.quiz.categories.not_found'));
     }
 
     /**
@@ -54,7 +51,7 @@ class EloquentCategoryRepository implements CategoryContract
             return true;
         }
 
-        throw new GeneralException(trans('exceptions.backend.access.categories.create_error'));
+        throw new GeneralException(trans('exceptions.backend.quiz.categories.create_error'));
     }
 
     /**
@@ -87,7 +84,7 @@ class EloquentCategoryRepository implements CategoryContract
             return true;
         }
 
-        throw new GeneralException(trans('exceptions.backend.access.categories.update_error'));
+        throw new GeneralException(trans('exceptions.backend.quiz.categories.update_error'));
     }
 
     /**
@@ -102,6 +99,6 @@ class EloquentCategoryRepository implements CategoryContract
             return true;
         }
 
-        throw new GeneralException(trans('exceptions.backend.access.categories.delete_error'));
+        throw new GeneralException(trans('exceptions.backend.quiz.categories.delete_error'));
     }
 }

@@ -56,6 +56,22 @@ return [
                 'update_password_error' => 'There was a problem changing this users password. Please try again.',
             ],
         ],
+
+        'quiz' => [
+            'categories' => [
+                'create_error' => 'There was a problem creating this category. Please try again.',
+                'not_found' => 'That category does not exist.',
+                'update_error' => 'There was a problem updating this category. Please try again.',
+                'delete_error' => 'There was a problem deleting this category. Please try again.',
+            ],
+
+            'questions' => [
+                'create_error' => 'There was a problem creating this question. Please try again.',
+                'not_found' => 'That question does not exist.',
+                'update_error' => 'There was a problem updating this question. Please try again.',
+                'delete_error' => 'There was a problem deleting this question. Please try again.',
+            ],
+        ],
     ],
 
     'frontend' => [

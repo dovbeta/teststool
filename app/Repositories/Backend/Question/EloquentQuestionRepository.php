@@ -3,8 +3,9 @@
 namespace App\Repositories\Backend\Question;
 
 use App\Exceptions\GeneralException;
-use App\Http\Requests\Backend\Access\Question\StoreQuestionRequest;
-use App\Models\Access\Question\Question;
+use App\Http\Requests\Backend\Quiz\Question\StoreQuestionRequest;
+use App\Http\Requests\Backend\Quiz\Question\UpdateQuestionRequest;
+use App\Models\Quiz\Question\Question;
 
 /**
  * Class EloquentCategoryRepository
@@ -26,7 +27,7 @@ class EloquentQuestionRepository implements QuestionContract
             return $question;
         }
 
-        throw new GeneralException(trans('exceptions.backend.access.questions.not_found'));
+        throw new GeneralException(trans('exceptions.backend.quiz.questions.not_found'));
     }
 
     /**
@@ -53,7 +54,7 @@ class EloquentQuestionRepository implements QuestionContract
             return true;
         }
 
-        throw new GeneralException(trans('exceptions.backend.access.questions.create_error'));
+        throw new GeneralException(trans('exceptions.backend.quiz.questions.create_error'));
     }
 
     /**
@@ -83,7 +84,7 @@ class EloquentQuestionRepository implements QuestionContract
             return true;
         }
 
-        throw new GeneralException(trans('exceptions.backend.access.questions.update_error'));
+        throw new GeneralException(trans('exceptions.backend.quiz.questions.update_error'));
     }
 
     /**
@@ -98,7 +99,7 @@ class EloquentQuestionRepository implements QuestionContract
             return true;
         }
 
-        throw new GeneralException(trans('exceptions.backend.access.questions.delete_error'));
+        throw new GeneralException(trans('exceptions.backend.quiz.questions.delete_error'));
     }
 
     /**

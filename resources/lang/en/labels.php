@@ -120,7 +120,9 @@ return [
                     'total' => 'user total|users total',
                 ],
             ],
+        ],
 
+        'quiz' => [
             'categories' => [
                 'management' => 'Categories management',
                 'all' => 'All categories',
@@ -140,6 +142,7 @@ return [
                 'all' => 'All questions',
                 'create' => 'Create question',
                 'edit' => 'Edit question',
+                'no_other_categories' => 'No Other Categories',
 
                 'table' => [
                     'id' => 'ID',

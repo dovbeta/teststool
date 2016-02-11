@@ -1,3 +1,1 @@
-<?php
-
-Route::get('dashboard', 'DashboardController@index')->name('admin.dashboard');
+<?phpRoute::get('dashboard', 'DashboardController@index')->name('admin.dashboard');
