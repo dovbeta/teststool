@@ -151,6 +151,24 @@ return [
                     'total' => 'question total|questions total',
                 ],
             ],
+
+            'polls' => [
+                'management' => 'Poll management',
+                'all' => 'All polls',
+                'create' => 'Create poll',
+                'edit' => 'Edit poll',
+                'no_other_categories' => 'No Other Categories',
+
+                'table' => [
+                    'id' => 'ID',
+                    'title' => 'Title',
+                    'category' => 'Category',
+                    'questions_number' => 'Questions number',
+                    'time_limit' => 'Time limit (m)',
+                    'time_limit_hint' => 'Minutes',
+                    'total' => 'poll total|polls total',
+                ],
+            ],
         ],
     ],
 

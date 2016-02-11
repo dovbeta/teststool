@@ -68,6 +68,14 @@ return [
                 'edit' => 'Edit question',
                 'main' => 'Questions',
             ],
+
+            'polls' => [
+                'title' => 'Polls',
+                'all' => 'All polls',
+                'create' => 'Create poll',
+                'edit' => 'Edit poll',
+                'main' => 'Polls',
+            ],
         ],
 
         'log-viewer' => [

@@ -54,5 +54,11 @@ return [
             'deleted' => 'The question was successfully deleted.',
             'updated' => 'The question was successfully updated.',
         ],
+
+        'polls' => [
+            'created' => 'The poll was successfully created.',
+            'deleted' => 'The poll was successfully deleted.',
+            'updated' => 'The poll was successfully updated.',
+        ],
     ],
 ];

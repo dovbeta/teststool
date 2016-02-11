@@ -53,6 +53,9 @@
                     <li class="{{ Active::pattern('admin/quiz/questions') }}">
                         <a href="{!!url('admin/quiz/questions')!!}"><span>{{ trans('menus.backend.quiz.questions.title') }}</span></a>
                     </li>
+                    <li class="{{ Active::pattern('admin/quiz/polls') }}">
+                        <a href="{!!url('admin/quiz/polls')!!}"><span>{{ trans('menus.backend.quiz.polls.title') }}</span></a>
+                    </li>
                 </ul>
             </li>
 

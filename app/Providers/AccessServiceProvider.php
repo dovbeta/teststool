@@ -90,6 +90,11 @@ class AccessServiceProvider extends ServiceProvider
         );
 
         $this->app->bind(
+            \App\Repositories\Backend\Poll\PollContract::class,
+            \App\Repositories\Backend\Poll\EloquentPollRepository::class
+        );
+
+        $this->app->bind(
             \App\Repositories\Backend\Role\RoleRepositoryContract::class,
             \App\Repositories\Backend\Role\EloquentRoleRepository::class
         );

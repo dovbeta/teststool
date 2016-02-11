@@ -154,6 +154,14 @@ return [
                     'description' => 'Description',
                     'categories' => 'Categories',
                 ],
+
+                'polls' => [
+                    'title' => 'Title',
+                    'category' => 'Category',
+                    'category_hint' => 'Select category',
+                    'questions_number' => 'Questions number',
+                    'time_limit' => 'Time limit',
+                ],
             ]
         ],
 
