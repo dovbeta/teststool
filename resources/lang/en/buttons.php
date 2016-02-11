@@ -22,7 +22,11 @@ return [
                 'delete_permanently' => 'Delete Permanently',
                 'resend_email' => 'Resend Confirmation E-mail',
                 'restore_user' => 'Restore User',
+                'tasks' => 'User tasks',
             ],
+        ],
+        'quiz' => [
+
         ],
     ],
 

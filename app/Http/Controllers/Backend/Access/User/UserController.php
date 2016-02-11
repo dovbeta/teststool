@@ -216,4 +216,24 @@ class UserController extends Controller
         $user->sendConfirmationEmail($user_id);
         return redirect()->back()->withFlashSuccess(trans('alerts.backend.users.confirmation_email'));
     }
+
+    /**
+     * @param  $id
+     * @return mixed
+     */
+    public function tasks($id)
+    {
+        return view('backend.access.tasks')
+            ->withUser($this->users->findOrThrowException($id));
+    }
+
+    /**
+     * @param  $id
+     * @return mixed
+     */
+    public function addTask($id)
+    {
+        return view('backend.access.tasks')
+            ->withUser($this->users->findOrThrowException($id));
+    }
 }

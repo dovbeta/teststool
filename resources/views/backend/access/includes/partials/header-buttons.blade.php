@@ -51,6 +51,29 @@
             <li><a href="{{ route('admin.access.roles.permissions.index') }}">{{ trans('menus.backend.access.permissions.groups.all') }}</a></li>
           </ul>
         </div><!--btn group-->
+
+        @if (isset($user))
+        <div class="btn-group">
+            <button type="button" class="btn btn-primary btn-xs dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                {{ trans('menus.backend.quiz.tasks.main') }} <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+                <li><a href="{{ route('admin.access.roles.index') }}">{{ trans('menus.backend.quiz.tasks.active') }}</a></li>
+
+                @permission('create-roles')
+                <li><a href="{{ route('admin.access.roles.create') }}">{{ trans('menus.backend.quiz.tasks.completed') }}</a></li>
+                @endauth
+
+                <li class="divider"></li>
+
+                @permission('assign-tasks')
+                <li><a href="{{ route('admin.access.user.add-task', $user->id) }}">{{ trans('menus.backend.quiz.tasks.create') }}</a></li>
+                @endauth
+
+
+            </ul>
+        </div><!--btn group-->
+        @endif
     </div><!--pull right-->
 
     <div class="clearfix"></div>

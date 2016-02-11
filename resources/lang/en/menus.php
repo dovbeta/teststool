@@ -76,6 +76,16 @@ return [
                 'edit' => 'Edit poll',
                 'main' => 'Polls',
             ],
+
+            'tasks' => [
+                'title' => 'Tasks',
+                'all' => 'All tasks',
+                'create' => 'Add task',
+                'edit' => 'Edit task',
+                'main' => 'Tasks',
+                'active' => 'Active tasks',
+                'completed' => 'Completed tasks',
+            ],
         ],
 
         'log-viewer' => [

@@ -105,6 +105,8 @@ return [
                 'no_roles' => 'No Roles to set.',
                 'permissions' => 'Permissions',
                 'permission_check' => 'Checking a permission will also check its dependencies, if any.',
+                'tasks' => 'Tasks list',
+                'active_tasks_for' => 'Active tasks list for :user',
 
                 'table' => [
                     'confirmed' => 'Confirmed',
