@@ -153,6 +153,11 @@ return [
                     'title' => 'Title',
                     'description' => 'Description',
                     'categories' => 'Categories',
+                    'possible_answers' => 'Possible answers',
+                    'number' => 'Number',
+                    'answer' => 'Answer',
+                    'numbered_answer' => 'Answer #:number',
+                    'is_correct' => 'Is correct',
                 ],
 
                 'polls' => [
