@@ -261,5 +261,15 @@ return [
             ],
         ],
 
+        'quiz' => [
+            'tasks' => [
+                'table' => [
+                    'id' => 'ID',
+                    'title' => 'Title',
+                    'status' => 'Status',
+                    'total' => 'task|tasks total',
+                ],
+            ],
+        ],
     ],
 ];

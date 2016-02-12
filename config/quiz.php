@@ -17,9 +17,19 @@ return [
     'category_question_table' => 'category_question',
 
     /*
-     *
+     * Answers table used to store answers for the questions
      */
     'answers_table' => 'answers',
+
+    /*
+     * Tasks table used to store tasks
+     */
+    'tasks_table' => 'tasks',
+
+    /*
+     * Table to store relations between tasks, questions and answers for them
+     */
+    'tasks_questions_answers_table' => 'tasks_questions_answers',
 
     /*
      * Configurations for the category
@@ -40,4 +50,8 @@ return [
          */
         'default_per_page' => 25,
     ],
+
+    'tasks' => [
+        'default_per_page' => 25,
+    ]
 ];

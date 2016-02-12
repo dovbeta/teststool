@@ -16,12 +16,15 @@
                             <li role="presentation" class="active">
                                 <a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">{{ trans('navs.frontend.user.my_information') }}</a>
                             </li>
+                            <li role="presentation">
+                                <a href="#tasks" aria-controls="tasks" role="tab" data-toggle="tab">{{ trans('navs.frontend.user.my_tasks') }}</a>
+                            </li>
                         </ul>
 
                         <div class="tab-content">
 
                             <div role="tabpanel" class="tab-pane active" id="profile">
-                                <table class="table table-striped table-hover table-bordered dashboard-table">
+                                <table class="table table-striped table-hover dashboard-table">
                                     <tr>
                                         <th>{{ trans('labels.frontend.user.profile.avatar') }}</th>
                                         <td><img src="{!! $user->picture !!}" class="user-profile-image" /></td>
@@ -53,6 +56,35 @@
                                         </td>
                                     </tr>
                                 </table>
+                            </div><!--tab panel profile-->
+
+                            <div role="tabpanel" class="tab-pane" id="tasks">
+                                <table class="table table-striped table-hover">
+                                    <thead>
+                                    <tr>
+                                        <th style="width: 5%">{{ trans('labels.frontend.quiz.tasks.table.id') }}</th>
+                                        <th>{{ trans('labels.frontend.quiz.tasks.table.title') }}</th>
+                                        <th>{{ trans('labels.frontend.quiz.tasks.table.status') }}</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    @foreach($tasks as $task)
+                                        <tr>
+                                            <td>{!! $task->id !!}</td>
+                                            <td>{!! $task->poll()->first()->title !!}</td>
+                                            <td>{!! $task->status !!}</td>
+                                        </tr>
+                                    @endforeach
+                                    </tbody>
+
+                                </table>
+                                <div class="pull-left">
+                                    {!! $tasks->total() !!} {{ trans_choice('labels.frontend.quiz.tasks.table.total', $tasks->total()) }}
+                                </div>
+
+                                <div class="pull-right">
+                                    {!! $tasks->render() !!}
+                                </div>
                             </div><!--tab panel profile-->
 
                         </div><!--tab content-->
