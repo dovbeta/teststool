@@ -17,7 +17,7 @@ class EloquentQuestionRepository implements QuestionContract
     /**
      * @param  $id
      * @throws GeneralException
-     * @return mixed
+     * @return Question|null
      */
     public function findOrThrowException($id)
     {
@@ -68,9 +68,9 @@ class EloquentQuestionRepository implements QuestionContract
      */
     private function createQuestionStub($input)
     {
-        $question                = new Question();
-        $question->title          = $input['title'];
-        $question->description          = $input['description'];
+        $question = new Question();
+        $question->title = $input['title'];
+        $question->description = $input['description'];
         return $question;
     }
 

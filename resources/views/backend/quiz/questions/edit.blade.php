@@ -53,10 +53,10 @@
                             <tr>
                                 <td>{!! $i + 1 !!}</td>
                                 <td>
-                                    {!! Form::hidden("question_answers[$i][id]", $question_answers[$i]->id) !!}
-                                    {!! Form::text("question_answers[$i][title]", $question_answers[$i]->title, ['class' => 'form-control', 'placeholder' => trans('validation.attributes.backend.quiz.questions.answer')]) !!}
+                                    {!! Form::hidden("question_answers[$i][id]", isset($question_answers[$i]) ? $question_answers[$i]->id : null) !!}
+                                    {!! Form::text("question_answers[$i][title]", isset($question_answers[$i]) ? $question_answers[$i]->title : null, ['class' => 'form-control', 'placeholder' => trans('validation.attributes.backend.quiz.questions.answer')]) !!}
                                 </td>
-                                <td>{!! Form::radio("is_correct", $i, !!$question_answers[$i]->is_correct) !!}</td>
+                                <td>{!! Form::radio("is_correct", $i, isset($question_answers[$i]) ? !!$question_answers[$i]->is_correct : null) !!}</td>
                             </tr>
                         @endfor
                         </tbody>

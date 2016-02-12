@@ -66,22 +66,7 @@ trait QuestionRelationship
      */
     public function createAnswers($answers)
     {
-        if ($answers && is_array($answers)) {
-            foreach ($answers as $answer) {
-                $this->createAnswer($answer);
-            }
-        }
-    }
-
-    /**
-     * Alias to eloquent has-many relation's create() method.
-     *
-     * @param  mixed  $answer
-     * @return void
-     */
-    public function createAnswer($answer)
-    {
-        $this->answers()->create($answer);
+        $this->answers()->createMany($answers);
     }
 
     /**
@@ -94,20 +79,16 @@ trait QuestionRelationship
     {
         if ($answers && is_array($answers)) {
             foreach ($answers as $answer) {
-                $this->updateAnswer($answer);
+                if (isset($answer['id']) && !!$answer['id']) {
+                    $this->answers()->updateOrCreate(
+                        array_only($answer, ['id']),
+                        array_except($answer, ['id'])
+                    );
+                } else {
+                    $this->answers()->create(array_except($answer, ['id']));
+                }
             }
         }
-    }
-
-    /**
-     * Alias to eloquent has-many relation's create() method.
-     *
-     * @param  mixed  $answer
-     * @return void
-     */
-    public function updateAnswer($answer)
-    {
-        $this->answers()->update($answer);
     }
 
     /**
