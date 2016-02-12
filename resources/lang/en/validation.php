@@ -162,6 +162,15 @@ return [
                     'questions_number' => 'Questions number',
                     'time_limit' => 'Time limit',
                 ],
+
+                'tasks' => [
+                    'user_id' => 'User',
+                    'poll_id' => 'Poll',
+                    'poll_hint' => 'Select poll',
+                    'status' => 'Status',
+                    'test_start' => 'Test start',
+                    'spent_time' => 'Spent time',
+                ],
             ]
         ],
 

@@ -60,5 +60,11 @@ return [
             'deleted' => 'The poll was successfully deleted.',
             'updated' => 'The poll was successfully updated.',
         ],
+
+        'tasks' => [
+            'created' => 'The task was successfully created.',
+            'deleted' => 'The task was successfully deleted.',
+            'updated' => 'The task was successfully updated.',
+        ],
     ],
 ];

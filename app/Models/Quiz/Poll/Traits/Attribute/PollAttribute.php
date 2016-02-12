@@ -13,7 +13,7 @@ trait PollAttribute
      */
     public function getEditButtonAttribute()
     {
-        if (access()->allow('edit-users')) {
+        if (access()->allow('edit-polls')) {
             return '<a href="' . route('admin.quiz.polls.edit', $this->id) . '" class="btn btn-xs btn-primary"><i class="fa fa-pencil" data-toggle="tooltip" data-placement="top" title="' . trans('buttons.general.crud.edit') . '"></i></a> ';
         }
 
@@ -40,4 +40,5 @@ trait PollAttribute
         return $this->getEditButtonAttribute() .
         $this->getDeleteButtonAttribute();
     }
+
 }

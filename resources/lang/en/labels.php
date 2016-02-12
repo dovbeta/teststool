@@ -140,7 +140,7 @@ return [
             ],
 
             'questions' => [
-                'management' => 'Question management',
+                'management' => 'Questions management',
                 'all' => 'All questions',
                 'create' => 'Create question',
                 'edit' => 'Edit question',
@@ -155,7 +155,7 @@ return [
             ],
 
             'polls' => [
-                'management' => 'Poll management',
+                'management' => 'Polls management',
                 'all' => 'All polls',
                 'create' => 'Create poll',
                 'edit' => 'Edit poll',
@@ -169,6 +169,25 @@ return [
                     'time_limit' => 'Time limit (m)',
                     'time_limit_hint' => 'Minutes',
                     'total' => 'poll total|polls total',
+                ],
+            ],
+
+            'tasks' => [
+                'management' => 'Tasks management',
+                'all' => 'All tasks',
+                'create' => 'Add task',
+                'edit' => 'Edit task',
+                'edit_for' => 'Edit task #:task_id for :user',
+                'no_other_categories' => 'No other tasks',
+
+                'table' => [
+                    'id' => 'ID',
+                    'poll_id' => 'Poll',
+                    'user_id' => 'User',
+                    'status' => 'Status',
+                    'test_start' => 'Test start',
+                    'spent_time' => 'Spent time',
+                    'total' => 'task|tasks total',
                 ],
             ],
         ],

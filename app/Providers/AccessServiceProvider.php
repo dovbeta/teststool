@@ -95,6 +95,11 @@ class AccessServiceProvider extends ServiceProvider
         );
 
         $this->app->bind(
+            \App\Repositories\Backend\Task\TaskContract::class,
+            \App\Repositories\Backend\Task\EloquentTaskRepository::class
+        );
+
+        $this->app->bind(
             \App\Repositories\Backend\Role\RoleRepositoryContract::class,
             \App\Repositories\Backend\Role\EloquentRoleRepository::class
         );

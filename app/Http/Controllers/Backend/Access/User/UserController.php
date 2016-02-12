@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend\Access\User;
 
 use App\Http\Controllers\Controller;
+use App\Models\Quiz\Poll\Poll;
 use App\Repositories\Backend\User\UserContract;
 use App\Repositories\Backend\Role\RoleRepositoryContract;
 use App\Http\Requests\Backend\Access\User\CreateUserRequest;
@@ -233,7 +234,8 @@ class UserController extends Controller
      */
     public function addTask($id)
     {
-        return view('backend.access.tasks')
-            ->withUser($this->users->findOrThrowException($id));
+        return view('backend.access.add-task')
+            ->withUser($this->users->findOrThrowException($id))
+            ->withPolls(Poll::all()->pluck('title', 'id'));
     }
 }

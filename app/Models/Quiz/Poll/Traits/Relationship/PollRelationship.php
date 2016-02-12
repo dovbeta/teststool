@@ -12,7 +12,7 @@ trait PollRelationship
 {
 
     /**
-     * Many-to-Many relations with Category.
+     * Poll belongs to category
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
