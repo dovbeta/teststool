@@ -1,7 +1,9 @@
 <?php
 
 namespace App\Models\Quiz\Question\Traits\Relationship;
+use App\Models\Quiz\Answer\Answer;
 use App\Models\Quiz\Category\Category;
+use App\Models\Quiz\Question\Question;
 
 
 /**
@@ -57,6 +59,58 @@ trait QuestionRelationship
     }
 
     /**
+     * Create multiple answers for the question
+     *
+     * @param mixed $answers
+     * @return void
+     */
+    public function createAnswers($answers)
+    {
+        if ($answers && is_array($answers)) {
+            foreach ($answers as $answer) {
+                $this->createAnswer($answer);
+            }
+        }
+    }
+
+    /**
+     * Alias to eloquent has-many relation's create() method.
+     *
+     * @param  mixed  $answer
+     * @return void
+     */
+    public function createAnswer($answer)
+    {
+        $this->answers()->create($answer);
+    }
+
+    /**
+     * Update multiple answers for the question
+     *
+     * @param mixed $answers
+     * @return void
+     */
+    public function updateAnswers($answers)
+    {
+        if ($answers && is_array($answers)) {
+            foreach ($answers as $answer) {
+                $this->updateAnswer($answer);
+            }
+        }
+    }
+
+    /**
+     * Alias to eloquent has-many relation's create() method.
+     *
+     * @param  mixed  $answer
+     * @return void
+     */
+    public function updateAnswer($answer)
+    {
+        $this->answers()->update($answer);
+    }
+
+    /**
      * Attach multiple categories to a question
      *
      * @param  mixed  $categories
@@ -82,5 +136,15 @@ trait QuestionRelationship
         foreach ($categories as $category) {
             $this->detachCategory($category);
         }
+    }
+
+    /**
+     * Get all of the answers for the question.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function answers()
+    {
+        return $this->hasMany(Answer::class);
     }
 }

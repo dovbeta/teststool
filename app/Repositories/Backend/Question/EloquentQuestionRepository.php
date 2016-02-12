@@ -40,17 +40,22 @@ class EloquentQuestionRepository implements QuestionContract
     }
 
     /**
-     * @param  StoreQuestionRequest $request
+     * @param $input
+     * @param $answers
+     * @param $categories
      * @throws GeneralException
      * @return bool
      */
-    public function create($request)
+    public function create($input, $answers, $categories)
     {
-        $question = $this->createQuestionStub($request);
+        $answers = $this->prepareAnswers($input, $answers);
+        $question = $this->createQuestionStub($input);
 
         if ($question->save()) {
             //Attach new categories
-            $question->attachCategories($request->only('question_categories'));
+            $question->attachCategories($categories);
+            //Create new answers
+            $question->createAnswers($answers);
             return true;
         }
 
@@ -70,17 +75,38 @@ class EloquentQuestionRepository implements QuestionContract
     }
 
     /**
+     * @param &$input
+     * @param $answers
+     * @return mixed
+     */
+    private function prepareAnswers(&$input, $answers) {
+        $answers = array_map(function($value, $key) use ($input) {
+            $value['is_correct'] = $key == $input['is_correct'];
+            return $value;
+        }, $answers['question_answers'], array_keys($answers['question_answers']));
+
+        unset($input['is_correct']);
+
+        return $answers;
+    }
+
+    /**
      * @param  int $id
-     * @param  UpdateQuestionRequest $request
+     * @param $input
+     * @param $answers
+     * @param $categories
      * @throws GeneralException
      * @return bool
      */
-    public function update($id, $request)
+    public function update($id, $input, $answers, $categories)
     {
+        $answers = $this->prepareAnswers($input, $answers);
         $question = $this->findOrThrowException($id);
 
-        if ($question->update($request->toArray())) {
-            $this->flushCategories($request->only('question_categories'), $question);
+        if ($question->update($input)) {
+            $this->flushCategories($categories, $question);
+            //Update answers
+            $question->updateAnswers($answers);
             return true;
         }
 

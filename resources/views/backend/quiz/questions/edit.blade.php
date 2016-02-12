@@ -35,31 +35,59 @@
                     {!! Form::textArea('description', null, ['class' => 'form-control', 'placeholder' => trans('validation.attributes.backend.quiz.questions.description')]) !!}
                 </div>
             </div><!--form control-->
+
+            <div class="form-group">
+                {!! Form::label(null, trans('validation.attributes.backend.quiz.questions.possible_answers'), ['class' => 'col-lg-2 control-label']) !!}
+
+                <div class="table-responsive col-lg-10">
+                    <table class="table table-striped table-bordered table-hover">
+                        <thead>
+                        <tr>
+                            <th style="width: 5%">{{ trans('validation.attributes.backend.quiz.questions.number') }}</th>
+                            <th>{{ trans('validation.attributes.backend.quiz.questions.answer') }}</th>
+                            <th>{{ trans('validation.attributes.backend.quiz.questions.is_correct') }}</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @for ($i = 0; $i <= 3; $i++)
+                            <tr>
+                                <td>{!! $i + 1 !!}</td>
+                                <td>
+                                    {!! Form::hidden("question_answers[$i][id]", $question_answers[$i]->id) !!}
+                                    {!! Form::text("question_answers[$i][title]", $question_answers[$i]->title, ['class' => 'form-control', 'placeholder' => trans('validation.attributes.backend.quiz.questions.answer')]) !!}
+                                </td>
+                                <td>{!! Form::radio("is_correct", $i, !!$question_answers[$i]->is_correct) !!}</td>
+                            </tr>
+                        @endfor
+                        </tbody>
+                    </table>
+                </div>
+            </div><!--form control-->
+
+            <div class="form-group">
+                <label class="col-lg-2 control-label">{{ trans('validation.attributes.backend.quiz.questions.categories') }}</label>
+                <div class="col-lg-10">
+                    @if (count($categories))
+                        @foreach (array_chunk($categories->toArray(), 10) as $category)
+                            <div class="col-lg-3">
+                                <ul style="margin:0;padding:0;list-style:none;">
+                                    @foreach ($category as $cat)
+                                        <li><input type="checkbox" value="{{$cat['id']}}" name="question_categories[]" {{in_array($cat['id'], $question_categories) ? 'checked' : ""}} id="category-{{$cat['id']}}">
+                                            <label for="category-{{$cat['id']}}">
+                                                {!! $cat['name'] !!} ({!! $cat['code'] !!})
+                                            </label>
+                                        </li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endforeach
+                    @else
+                        {{ trans('labels.backend.quiz.questions.no_other_categories') }}
+                    @endif
+                </div><!--col 3-->
+            </div><!--form control-->
         </div><!-- /.box-body -->
     </div><!--box-->
-
-    <div class="form-group">
-        <label class="col-lg-2 control-label">{{ trans('validation.attributes.backend.quiz.questions.categories') }}</label>
-        <div class="col-lg-10">
-            @if (count($categories))
-                @foreach (array_chunk($categories->toArray(), 10) as $category)
-                    <div class="col-lg-3">
-                        <ul style="margin:0;padding:0;list-style:none;">
-                            @foreach ($category as $cat)
-                                <li><input type="checkbox" value="{{$cat['id']}}" name="question_categories[]" {{in_array($cat['id'], $question_categories) ? 'checked' : ""}} id="category-{{$cat['id']}}">
-                                    <label for="category-{{$cat['id']}}">
-                                        {!! $cat['name'] !!} ({!! $cat['code'] !!})
-                                    </label>
-                                </li>
-                            @endforeach
-                        </ul>
-                    </div>
-                @endforeach
-            @else
-                {{ trans('labels.backend.quiz.questions.no_other_categories') }}
-            @endif
-        </div><!--col 3-->
-    </div><!--form control-->
 
     <div class="box box-info">
         <div class="box-body">

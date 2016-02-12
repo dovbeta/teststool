@@ -10,6 +10,9 @@ class Question extends Model
 {
     use QuestionAttribute, QuestionRelationship;
 
+    /**
+     * {@inheritDoc}
+     */
     protected $fillable = [
         'title',
         'description',

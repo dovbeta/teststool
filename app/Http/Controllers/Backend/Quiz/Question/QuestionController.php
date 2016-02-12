@@ -62,7 +62,11 @@ class QuestionController extends Controller
      */
     public function store(StoreQuestionRequest $request)
     {
-        $this->questions->create($request);
+        $this->questions->create(
+            $request->except('question_answers', 'question_categories'),
+            $request->only('question_answers'),
+            $request->only('question_categories')
+        );
         return redirect()->route('admin.quiz.questions.index')->withFlashSuccess(trans('alerts.backend.questions.created'));
     }
 
@@ -77,6 +81,7 @@ class QuestionController extends Controller
         return view('backend.quiz.questions.edit')
             ->withQuestion($question)
             ->withQuestionCategories($question->categories()->lists('id')->all())
+            ->withQuestionAnswers($question->answers()->orderBy('id')->get())
             ->withCategories($this->categories->getAllCategories());
     }
 
@@ -87,8 +92,13 @@ class QuestionController extends Controller
      */
     public function update($id, UpdateQuestionRequest $request)
     {
-        $this->questions->update($id, $request);
-        return redirect()->route('admin.access.questions.index')->withFlashSuccess(trans('alerts.backend.questions.updated'));
+        $this->questions->update(
+            $id,
+            $request->except('question_answers', 'question_categories'),
+            $request->only('question_answers'),
+            $request->only('question_categories')
+        );
+        return redirect()->route('admin.quiz.questions.index')->withFlashSuccess(trans('alerts.backend.questions.updated'));
     }
 
     /**
