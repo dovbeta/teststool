@@ -4,7 +4,9 @@ namespace App\Repositories\Backend\Task;
 
 use App\Exceptions\GeneralException;
 use App\Http\Requests\Backend\Quiz\Task\StoreTaskRequest;
+use App\Http\Requests\Backend\Quiz\Task\UpdateTaskRequest;
 use App\Models\Quiz\Task\Task;
+use Carbon\Carbon;
 
 /**
  * Class EloquentTaskRepository
@@ -75,6 +77,7 @@ class EloquentTaskRepository implements TaskContract
     public function update($id, $request)
     {
         $task = $this->findOrThrowException($id);
+        $task->updated_at = Carbon::now();
 
         if ($task->update($request->toArray())) {
             return true;

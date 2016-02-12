@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Models\Quiz\Task\Traits\Attribute;
+use Carbon\Carbon;
 
 /**
  * Class TaskAttribute
@@ -40,4 +41,5 @@ trait TaskAttribute
         return $this->getEditButtonAttribute() .
         $this->getDeleteButtonAttribute();
     }
+
 }

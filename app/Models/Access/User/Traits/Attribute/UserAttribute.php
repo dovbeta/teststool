@@ -157,7 +157,7 @@ trait UserAttribute
     public function getTasksButtonAttribute()
     {
         if (access()->allow('add-tasks')) {
-            return '<a href="' . route('admin.access.user.tasks', $this->id) . '" class="btn btn-xs btn-success"><i class="fa fa-plus" data-toggle="tooltip" data-placement="top" title="' . trans('buttons.backend.access.users.tasks') . '"></i></a>';
+            return '<a href="' . route('admin.access.user.tasks', $this->id) . '" class="btn btn-xs btn-success"><i class="fa fa-list" data-toggle="tooltip" data-placement="top" title="' . trans('buttons.backend.access.users.tasks') . '"></i></a>';
         }
 
         return '';

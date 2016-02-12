@@ -179,6 +179,13 @@ return [
                 'edit' => 'Edit task',
                 'edit_for' => 'Edit task #:task_id for :user',
                 'no_other_categories' => 'No other tasks',
+                'active_tasks' => 'Active tasks',
+                'active_tasks_for' => 'Active tasks for :user',
+                'status' => [
+                    'PENDING' => 'Pending',
+                    'IN-PROGRESS' =>  'In progress',
+                    'COMPLETED' => 'Completed',
+                ],
 
                 'table' => [
                     'id' => 'ID',
@@ -188,6 +195,7 @@ return [
                     'test_start' => 'Test start',
                     'spent_time' => 'Spent time',
                     'total' => 'task|tasks total',
+                    'assigned_at' => 'Assigned',
                 ],
             ],
         ],

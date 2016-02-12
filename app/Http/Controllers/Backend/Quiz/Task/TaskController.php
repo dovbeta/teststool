@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend\Quiz\Task;
 
 use App\Http\Requests\Backend\Quiz\Task\CreateTaskRequest;
+use App\Http\Requests\Backend\Quiz\Task\DeleteTaskRequest;
 use App\Http\Requests\Backend\Quiz\Task\EditTaskRequest;
 use App\Http\Requests\Backend\Quiz\Task\StoreTaskRequest;
 
@@ -31,8 +32,8 @@ class TaskController extends Controller
      * @return mixed
      */
     public function index() {
-        return view('backend.quiz.polls.index')
-            ->withPolls($this->polls->getPollsPaginated(config('quiz.polls.default_per_page'), 1));
+//        return view('backend.quiz.polls.index')
+//            ->withPolls($this->polls->getPollsPaginated(config('quiz.polls.default_per_page'), 1));
     }
 
     /**
@@ -41,8 +42,8 @@ class TaskController extends Controller
      */
     public function create(CreatePollRequest $request)
     {
-        return view('backend.quiz.polls.create')
-            ->withCategories($this->categories->getAllCategories());
+//        return view('backend.quiz.polls.create')
+//            ->withCategories($this->categories->getAllCategories());
     }
 
     /**
@@ -80,13 +81,13 @@ class TaskController extends Controller
 
     /**
      * @param  $id
-     * @param  DeletePollRequest $request
+     * @param  DeleteTaskRequest $request
      * @return mixed
      */
-    public function destroy($id, DeletePollRequest $request)
+    public function destroy($id, DeleteTaskRequest $request)
     {
-        $this->polls->destroy($id);
-        return redirect()->back()->withFlashSuccess(trans('alerts.backend.polls.deleted'));
+        $this->tasks->destroy($id);
+        return redirect()->back()->withFlashSuccess(trans('alerts.backend.tasks.deleted'));
     }
 
 }

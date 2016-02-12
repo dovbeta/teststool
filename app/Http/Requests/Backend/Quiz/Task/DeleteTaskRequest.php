@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Http\Requests\Backend\Quiz\Poll;
+namespace App\Http\Requests\Backend\Quiz\Task;
 
 use App\Http\Requests\Request;
 
 /**
  * Class DeleteQPollRequest
- * @package App\Http\Requests\Backend\Quiz\Poll
+ * @package App\Http\Requests\Backend\Quiz\Task
  */
-class DeletePollRequest extends Request
+class DeleteTaskRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -17,7 +17,7 @@ class DeletePollRequest extends Request
      */
     public function authorize()
     {
-        return access()->allow('delete-polls');
+        return access()->allow('delete-tasks');
     }
 
     /**
