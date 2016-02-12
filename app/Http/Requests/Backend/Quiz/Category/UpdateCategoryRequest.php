@@ -27,9 +27,11 @@ class UpdateCategoryRequest extends Request
      */
     public function rules()
     {
+        $id = $this->route()->getParameter('categories');
+
         return [
-            'name'  => 'required',
-            'code'  => 'required|unique:categories',
+            'name'  => "required",
+            'code'  => "required|unique:categories,code,{$id}",
         ];
     }
 
