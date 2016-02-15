@@ -41,6 +41,24 @@ class EloquentTaskRepository implements TaskContract
     }
 
     /**
+     * @param  $per_page
+     * @return mixed
+     */
+    public function getActiveTasksPaginated($per_page)
+    {
+        return Task::active()->paginate($per_page);
+    }
+
+    /**
+     * @param  $per_page
+     * @return mixed
+     */
+    public function getCompletedTasksPaginated($per_page)
+    {
+        return Task::completed()->paginate($per_page);
+    }
+
+    /**
      * @param  StoreTaskRequest $request
      * @throws GeneralException
      * @return bool

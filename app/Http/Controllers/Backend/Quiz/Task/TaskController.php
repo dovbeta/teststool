@@ -10,8 +10,10 @@ use App\Http\Requests\Backend\Quiz\Task\StoreTaskRequest;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\Quiz\Task\UpdateTaskRequest;
+use App\Models\Access\User\User;
 use App\Models\Quiz\Poll\Poll;
 use App\Repositories\Backend\Task\TaskContract;
+use GuzzleHttp\Pool;
 
 class TaskController extends Controller
 {
@@ -32,18 +34,35 @@ class TaskController extends Controller
      * @return mixed
      */
     public function index() {
-//        return view('backend.quiz.polls.index')
-//            ->withPolls($this->polls->getPollsPaginated(config('quiz.polls.default_per_page'), 1));
+        return view('backend.quiz.tasks.index')
+            ->withTasks($this->tasks->getTasksPaginated(config('quiz.tasks.default_per_page'), 1));
     }
 
     /**
-     * @param  CreatePollRequest $request
      * @return mixed
      */
-    public function create(CreatePollRequest $request)
+    public function active() {
+        return view('backend.quiz.tasks.active')
+            ->withTasks($this->tasks->getActiveTasksPaginated(config('quiz.tasks.default_per_page'), 1));
+    }
+
+    /**
+     * @return mixed
+     */
+    public function completed() {
+        return view('backend.quiz.tasks.completed')
+            ->withTasks($this->tasks->getCompletedTasksPaginated(config('quiz.tasks.default_per_page'), 1));
+    }
+
+    /**
+     * @param  CreateTaskRequest $request
+     * @return mixed
+     */
+    public function create(CreateTaskRequest $request)
     {
-//        return view('backend.quiz.polls.create')
-//            ->withCategories($this->categories->getAllCategories());
+        return view('backend.quiz.tasks.create')
+            ->withPolls(Poll::all()->pluck('title', 'id'))
+            ->withUsers(User::all()->pluck('name', 'id'));
     }
 
     /**
@@ -53,7 +72,7 @@ class TaskController extends Controller
     public function store(StoreTaskRequest $request)
     {
         $this->tasks->create($request);
-        return redirect()->route('admin.access.user.tasks', $request->get('user_id'))->withFlashSuccess(trans('alerts.backend.tasks.created'));
+        return redirect()->route('admin.quiz.tasks.index')->withFlashSuccess(trans('alerts.backend.tasks.created'));
     }
 
     /**

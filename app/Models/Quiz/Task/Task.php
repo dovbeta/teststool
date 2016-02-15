@@ -15,4 +15,23 @@ class Task extends Model
         'user_id',
     ];
 
+    /**
+     * Scope a query to only active Tasks.
+     *
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeActive($query) {
+        return $query->where('status', '<>', 'COMPLETED');
+    }
+
+    /**
+     * Scope a query to only completed Tasks.
+     *
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeCompleted($query) {
+        return $query->where('status', '=', 'COMPLETED');
+    }
+
+
 }

@@ -3,7 +3,7 @@
 namespace App\Models\Quiz\Task\Traits\Attribute;
 use App\Exceptions\GeneralException;
 use App\Models\Quiz\Task\Task;
-use Carbon\Carbon;
+use Route;
 
 /**
  * Class TaskAttribute
@@ -16,7 +16,7 @@ trait TaskAttribute
      */
     public function getEditButtonAttribute()
     {
-        if (access()->allow('edit-tasks')) {
+        if (access()->allow('edit-tasks') && $this->isEditable()) {
             return '<a href="' . route('admin.quiz.tasks.edit', $this->id) . '" class="btn btn-xs btn-primary"><i class="fa fa-pencil" data-toggle="tooltip" data-placement="top" title="' . trans('buttons.general.crud.edit') . '"></i></a> ';
         }
 
@@ -39,8 +39,20 @@ trait TaskAttribute
      */
     public function getDeleteButtonAttribute()
     {
-        if (access()->allow('delete-users')) {
+        if (access()->allow('delete-users') && $this->isEditable()) {
             return '<a href="' . route('admin.quiz.tasks.destroy', $this->id) . '" data-method="delete" class="btn btn-xs btn-danger"><i class="fa fa-trash" data-toggle="tooltip" data-placement="top" title="' . trans('buttons.general.crud.delete') . '"></i></a>';
+        }
+
+        return '';
+    }
+
+    /**
+     * @return string
+     */
+    public function getResultsButtonAttribute()
+    {
+        if (access()->allow('see-results') && $this->isCompleted()) {
+            return '<a href="' . route('admin.quiz.tasks.completed') . '" class="btn btn-xs btn-primary"><i class="fa fa-list" data-toggle="tooltip" data-placement="top" title="' . trans('buttons.backend.quiz.tasks.results') . '"></i></a>';
         }
 
         return '';
@@ -51,8 +63,11 @@ trait TaskAttribute
      */
     public function getActionButtonsAttribute()
     {
-        return $this->getEditForUserButtonAttribute() .
-        $this->getDeleteButtonAttribute();
+        return ((Route::currentRouteName() == 'admin.access.user.tasks') ?
+            $this->getEditForUserButtonAttribute() :
+            $this->getEditButtonAttribute()) .
+            $this->getDeleteButtonAttribute().
+            $this->getResultsButtonAttribute();
     }
 
     /**
@@ -70,5 +85,14 @@ trait TaskAttribute
 
         throw new GeneralException(trans('exceptions.backend.quiz.tasks.not_found'));
     }
+
+    public function isEditable() {
+        return ($this->status === 'PENDING');
+    }
+
+    public function isCompleted() {
+        return ($this->status === 'COMPLETED');
+    }
+
 
 }

@@ -175,12 +175,16 @@ return [
             'tasks' => [
                 'management' => 'Tasks management',
                 'all' => 'All tasks',
+                'all_active' => 'All active tasks',
+                'all_completed' => 'All completed tasks',
                 'create' => 'Add task',
                 'edit' => 'Edit task',
                 'edit_for' => 'Edit task #:task_id for :user',
                 'no_other_categories' => 'No other tasks',
                 'active_tasks' => 'Active tasks',
+                'completed_tasks' => 'Completed tasks',
                 'active_tasks_for' => 'Active tasks for :user',
+                'completed_tasks_for' => 'Completed tasks for :user',
                 'status' => [
                     'PENDING' => 'Pending',
                     'IN-PROGRESS' =>  'In progress',

@@ -17,11 +17,18 @@
             <h3 class="box-title">{{ trans('labels.backend.quiz.tasks.create') }}</h3>
 
             <div class="box-tools pull-right">
-                @include('backend.access.includes.partials.header-buttons')
+                @include('backend.quiz.tasks.partials.header-buttons')
             </div>
         </div><!-- /.box-header -->
 
-        {!! Form::hidden('user_id', $user->id) !!}
+        <div class="box-body">
+            <div class="form-group">
+                {!! Form::label('user_id', trans('validation.attributes.backend.quiz.tasks.user_id'), ['class' => 'col-lg-2 control-label']) !!}
+                <div class="col-lg-10">
+                    {!! Form::select('user_id', $users, null, ['class' => 'form-control', 'placeholder' => trans('validation.attributes.backend.quiz.tasks.user_hint')]) !!}
+                </div>
+            </div><!--form control-->
+        </div><!-- /.box-body -->
 
         <div class="box-body">
             <div class="form-group">
@@ -36,7 +43,7 @@
     <div class="box box-info">
         <div class="box-body">
             <div class="pull-left">
-                <a href="{{route('admin.access.user.tasks', [$user->id])}}" class="btn btn-danger btn-xs">{{ trans('buttons.general.cancel') }}</a>
+                <a href="{{route('admin.quiz.tasks.index')}}" class="btn btn-danger btn-xs">{{ trans('buttons.general.cancel') }}</a>
             </div>
 
             <div class="pull-right">

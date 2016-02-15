@@ -26,7 +26,9 @@ return [
             ],
         ],
         'quiz' => [
-
+            'tasks' => [
+                'results' => 'Task results'
+            ],
         ],
     ],
 

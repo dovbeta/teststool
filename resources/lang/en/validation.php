@@ -170,6 +170,7 @@ return [
 
                 'tasks' => [
                     'user_id' => 'User',
+                    'user_hint' => 'Select user',
                     'poll_id' => 'Poll',
                     'poll_hint' => 'Select poll',
                     'status' => 'Status',
