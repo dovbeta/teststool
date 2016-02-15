@@ -29,13 +29,3 @@ Breadcrumbs::register('admin.access.user.change-password', function ($breadcrumb
     $breadcrumbs->parent('admin.access.users.index');
     $breadcrumbs->push(trans('menus.backend.access.users.change-password'), route('admin.access.user.change-password', $id));
 });
-
-Breadcrumbs::register('admin.access.user.tasks', function ($breadcrumbs, $id) {
-    $breadcrumbs->parent('admin.access.users.index');
-    $breadcrumbs->push(trans('menus.backend.access.users.tasks'), route('admin.access.user.tasks', $id));
-});
-
-Breadcrumbs::register('admin.access.user.task', function ($breadcrumbs, $id, $task_id) {
-    $breadcrumbs->parent('admin.access.user.tasks', $id);
-    $breadcrumbs->push(trans('menus.backend.quiz.tasks.edit'), route('admin.access.user.task', [$id, $task_id]));
-});

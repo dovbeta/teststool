@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Backend\Access\User;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Backend\Quiz\Task\EditTaskRequest;
 use App\Models\Quiz\Poll\Poll;
+use App\Models\Quiz\Task\Task;
 use App\Repositories\Backend\User\UserContract;
 use App\Repositories\Backend\Role\RoleRepositoryContract;
 use App\Http\Requests\Backend\Access\User\CreateUserRequest;
@@ -236,6 +238,19 @@ class UserController extends Controller
     {
         return view('backend.access.add-task')
             ->withUser($this->users->findOrThrowException($id))
+            ->withPolls(Poll::all()->pluck('title', 'id'));
+    }
+
+    /**
+     * @param  $id
+     * @param  $task_id
+     * @param  EditTaskRequest $request
+     * @return mixed
+     */
+    public function task($id, $task_id, EditTaskRequest $request)
+    {
+        return view('backend.access.task-edit')
+            ->withTask(Task::findOrThrowException($task_id))
             ->withPolls(Poll::all()->pluck('title', 'id'));
     }
 }
