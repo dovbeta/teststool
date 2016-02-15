@@ -5,14 +5,14 @@
 @section('page-header')
     <h1>
         {{ trans('labels.backend.quiz.tasks.management') }}
-        <small>{{ trans('labels.backend.quiz.tasks.active_tasks') }}</small>
+        <small>{{ trans('labels.backend.quiz.tasks.all') }}</small>
     </h1>
 @endsection
 
 @section('content')
     <div class="box box-success">
         <div class="box-header with-border">
-            <h3 class="box-title">{{ trans('labels.backend.quiz.tasks.active_tasks_for', ['user' => $user->name]) }}</h3>
+            <h3 class="box-title">{{ trans('labels.backend.quiz.tasks.all_for', ['user' => $user->name]) }}</h3>
 
             <div class="box-tools pull-right">
                 @include('backend.access.includes.partials.header-buttons')

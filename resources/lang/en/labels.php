@@ -175,9 +175,11 @@ return [
             'tasks' => [
                 'management' => 'Tasks management',
                 'all' => 'All tasks',
+                'all_for' => 'All tasks for :user',
                 'all_active' => 'All active tasks',
                 'all_completed' => 'All completed tasks',
                 'create' => 'Add task',
+                'create_for' => 'Add task for :user',
                 'edit' => 'Edit task',
                 'edit_for' => 'Edit task #:task_id for :user',
                 'no_other_categories' => 'No other tasks',

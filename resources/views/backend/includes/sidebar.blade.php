@@ -36,7 +36,7 @@
             </li>
 
             @permission('view-access-management')
-                <li class="{{ Active::pattern('admin/access/users/*') }}">
+                <li class="{{ Active::pattern('admin/access/user*') }}">
                     <a href="{!!url('admin/access/users')!!}"><span>{{ trans('menus.backend.access.title') }}</span></a>
                 </li>
             @endauth

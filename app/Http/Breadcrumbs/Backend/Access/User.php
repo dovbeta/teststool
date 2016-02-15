@@ -39,3 +39,8 @@ Breadcrumbs::register('admin.access.user.task', function ($breadcrumbs, $id, $ta
     $breadcrumbs->parent('admin.access.user.tasks', $id);
     $breadcrumbs->push(trans('menus.backend.quiz.tasks.edit'), route('admin.access.user.task', [$id, $task_id]));
 });
+
+Breadcrumbs::register('admin.access.user.add-task', function ($breadcrumbs, $id) {
+    $breadcrumbs->parent('admin.access.user.tasks', $id);
+    $breadcrumbs->push(trans('menus.backend.quiz.tasks.create'), route('admin.access.user.add-task', [$id]));
+});
