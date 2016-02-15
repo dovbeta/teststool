@@ -47,6 +47,7 @@ return [
                 'deleted' => 'Deleted Users',
                 'edit' => 'Edit User',
                 'main' => 'Users',
+                'tasks' => 'User tasks',
             ],
         ],
 
