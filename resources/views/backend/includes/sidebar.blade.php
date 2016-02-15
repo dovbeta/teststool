@@ -28,12 +28,6 @@
 
         <!-- Sidebar Menu -->
         <ul class="sidebar-menu">
-            <li class="header">{{ trans('menus.backend.sidebar.general') }}</li>
-
-            <!-- Optionally, you can add icons to the links -->
-            <li class="{{ Active::pattern('admin/dashboard') }}">
-                <a href="{!! route('admin.dashboard') !!}"><span>{{ trans('menus.backend.sidebar.dashboard') }}</span></a>
-            </li>
 
             @permission('view-access-management')
                 <li class="{{ Active::pattern('admin/access/user*') }}">
@@ -57,22 +51,7 @@
                         <a href="{!!url('admin/quiz/polls')!!}"><span>{{ trans('menus.backend.quiz.polls.title') }}</span></a>
                     </li>
                     <li class="{{ Active::pattern('admin/quiz/tasks') }}">
-                        <a href="{!!url('admin/quiz/tasks')!!}"><span>{{ trans('menus.backend.quiz.tasks.title') }}</span></a>
-                    </li>
-                </ul>
-            </li>
-
-            <li class="{{ Active::pattern('admin/log-viewer*') }} treeview">
-                <a href="#">
-                    <span>{{ trans('menus.backend.log-viewer.main') }}</span>
-                    <i class="fa fa-angle-left pull-right"></i>
-                </a>
-                <ul class="treeview-menu {{ Active::pattern('admin/log-viewer*', 'menu-open') }}" style="display: none; {{ Active::pattern('admin/log-viewer*', 'display: block;') }}">
-                    <li class="{{ Active::pattern('admin/log-viewer') }}">
-                        <a href="{!! url('admin/log-viewer') !!}">{{ trans('menus.backend.log-viewer.dashboard') }}</a>
-                    </li>
-                    <li class="{{ Active::pattern('admin/log-viewer/logs') }}">
-                        <a href="{!! url('admin/log-viewer/logs') !!}">{{ trans('menus.backend.log-viewer.logs') }}</a>
+                        <a href="{!!url('admin/quiz/tasks/active')!!}"><span>{{ trans('menus.backend.quiz.tasks.title') }}</span></a>
                     </li>
                 </ul>
             </li>

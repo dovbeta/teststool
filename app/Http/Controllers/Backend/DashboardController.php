@@ -15,6 +15,6 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        return view('backend.dashboard');
+        return redirect()->route('admin.quiz.tasks.active');
     }
 }
