@@ -36,7 +36,6 @@
                                 @else
                                 <td></td>
                                 @endif
-
                             </tr>
                         @endforeach
                     </tbody>
@@ -44,11 +43,20 @@
                         <tr>
                             <td></td>
                             <td></td>
-                            <td>{{ trans('labels.backend.quiz.results.table.answer') }}</td>
+                            <td>{{ trans('labels.backend.quiz.results.table.footer_correct', [
+                                'correct_num' => $task->correctUserAnswers()->count(),
+                                'percent_num' => number_format($task->getCorrectPercentage(), 2),
+                                ]) }}</td>
                         </tr>
                     </tfooter>
                 </table>
-                <span>{{ trans('labels.backend.quiz.results.summary', ['user' => 'Tom', 'questions_num' => 3, 'answers_num' => 2, 'correct_num' => 1, 'percent_num' => 20]) }}</span>
+                <span>{{ trans('labels.backend.quiz.results.summary', [
+                    'user' => $task->user->name,
+                    'questions_num' => $task->userAnswers->count(),
+                    'answers_num' => $task->sentUserAnswers->count(),
+                    'correct_num' => $task->correctUserAnswers()->count(),
+                    'percent_num' => number_format($task->getCorrectPercentage(), 2)
+                    ]) }}</span>
             </div>
 
             <div class="clearfix"></div>

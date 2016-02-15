@@ -200,9 +200,10 @@ return [
                     'user_id' => 'User',
                     'status' => 'Status',
                     'test_start' => 'Test start',
-                    'spent_time' => 'Spent time',
+                    'spent_time' => 'Spent time (m)',
                     'total' => 'task|tasks total',
                     'assigned_at' => 'Assigned',
+                    'correct_answers' => 'Correct answers',
                 ],
             ],
 
@@ -215,6 +216,7 @@ return [
                     'question' => 'Question',
                     'description' => 'Description',
                     'answer' => 'Answer',
+                    'footer_correct' => 'Correct: :correct_num (:percent_num%)'
                 ],
             ],
         ],

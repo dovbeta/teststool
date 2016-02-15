@@ -42,4 +42,24 @@ trait TaskRelationship
     {
         return $this->hasMany(UserAnswer::class);
     }
+
+    /**
+     * Task has many user answers
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function sentUserAnswers()
+    {
+        return $this->hasMany(UserAnswer::class)->sentAnswers();
+    }
+
+    /**
+     * Task has many user answers
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function correctUserAnswers()
+    {
+        return $this->hasMany(UserAnswer::class)->correctAnswers();
+    }
 }

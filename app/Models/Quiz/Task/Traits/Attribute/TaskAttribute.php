@@ -52,7 +52,7 @@ trait TaskAttribute
     public function getResultsButtonAttribute()
     {
         if (access()->allow('see-results') && $this->isCompleted()) {
-            return '<a href="' . route('admin.quiz.tasks.completed') . '" class="btn btn-xs btn-primary"><i class="fa fa-list" data-toggle="tooltip" data-placement="top" title="' . trans('buttons.backend.quiz.tasks.results') . '"></i></a>';
+            return '<a href="' . route('admin.quiz.results.show', $this->id) . '" class="btn btn-xs btn-primary"><i class="fa fa-list" data-toggle="tooltip" data-placement="top" title="' . trans('buttons.backend.quiz.tasks.results') . '"></i></a>';
         }
 
         return '';
@@ -92,6 +92,10 @@ trait TaskAttribute
 
     public function isCompleted() {
         return ($this->status === 'COMPLETED');
+    }
+
+    public function getCorrectPercentage() {
+        return $this->userAnswers->count() ? $this->correctUserAnswers()->count() / $this->userAnswers->count() * 100 : 0;
     }
 
 
