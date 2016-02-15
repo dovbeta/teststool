@@ -244,4 +244,15 @@ class EloquentUserRepository implements UserContract
 
         throw new GeneralException(trans('exceptions.frontend.auth.password.change_mismatch'));
     }
+
+    /**
+     * @param  $per_page
+     * @return mixed
+     */
+    public function getTasksPaginated($per_page)
+    {
+        $user = $this->find(access()->id());
+
+        return $user->tasks()->paginate($per_page);
+    }
 }

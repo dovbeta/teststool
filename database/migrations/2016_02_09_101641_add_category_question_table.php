@@ -14,9 +14,20 @@ class AddCategoryQuestionTable extends Migration
     {
         Schema::create('category_question', function (Blueprint $table) {
             $table->integer('category_id')->unsigned()->index();
-            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
             $table->integer('question_id')->unsigned()->index();
-            $table->foreign('question_id')->references('id')->on('questions')->onDelete('cascade');
+
+            /**
+             * Add Foreign/Unique/Index
+             */
+            $table->foreign('category_id')
+                ->references('id')
+                ->on('categories')
+                ->onDelete('cascade');
+
+            $table->foreign('question_id')
+                ->references('id')
+                ->on('questions')
+                ->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -28,6 +39,11 @@ class AddCategoryQuestionTable extends Migration
      */
     public function down()
     {
+        Schema::table('category_question', function (Blueprint $table) {
+            $table->dropForeign('category_question' . '_category_id_foreign');
+            $table->dropForeign('category_question' . '_question_id_foreign');
+        });
+
         Schema::drop('category_question');
     }
 }

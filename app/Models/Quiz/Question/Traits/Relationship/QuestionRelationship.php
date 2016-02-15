@@ -1,14 +1,20 @@
 <?php
 
 namespace App\Models\Quiz\Question\Traits\Relationship;
+
 use App\Models\Quiz\Answer\Answer;
 use App\Models\Quiz\Category\Category;
-use App\Models\Quiz\Question\Question;
+use \Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use \Illuminate\Database\Eloquent\Relations\HasMany;
 
 
 /**
  * Class QuestionRelationship
+ *
  * @package App\Models\Quiz\Question\Traits\Relationship
+ *
+ * @method BelongsToMany belongsToMany(string $className)
+ * @method HasMany hasMany(string $className)
  */
 trait QuestionRelationship
 {
@@ -16,11 +22,21 @@ trait QuestionRelationship
     /**
      * Many-to-Many relations with Category.
      *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     * @return BelongsToMany
      */
     public function categories()
     {
         return $this->belongsToMany(Category::class);
+    }
+
+    /**
+     * Get all of the answers for the question.
+     *
+     * @return HasMany
+     */
+    public function answers()
+    {
+        return $this->hasMany(Answer::class);
     }
 
 
@@ -59,6 +75,34 @@ trait QuestionRelationship
     }
 
     /**
+     * Attach multiple categories to a question
+     *
+     * @param  mixed  $categories
+     * @return void
+     */
+    public function attachCategories($categories)
+    {
+        if ($categories && is_array($categories)) {
+            foreach ($categories as $category) {
+                $this->attachCategory($category);
+            }
+        }
+    }
+
+    /**
+     * Detach multiple categories from a question
+     *
+     * @param  mixed  $categories
+     * @return void
+     */
+    public function detachCategories($categories)
+    {
+        foreach ($categories as $category) {
+            $this->detachCategory($category);
+        }
+    }
+
+    /**
      * Create multiple answers for the question
      *
      * @param mixed $answers
@@ -89,43 +133,5 @@ trait QuestionRelationship
                 }
             }
         }
-    }
-
-    /**
-     * Attach multiple categories to a question
-     *
-     * @param  mixed  $categories
-     * @return void
-     */
-    public function attachCategories($categories)
-    {
-        if ($categories && is_array($categories)) {
-            foreach ($categories as $category) {
-                $this->attachCategory($category);
-            }
-        }
-    }
-
-    /**
-     * Detach multiple categories from a question
-     *
-     * @param  mixed  $categories
-     * @return void
-     */
-    public function detachCategories($categories)
-    {
-        foreach ($categories as $category) {
-            $this->detachCategory($category);
-        }
-    }
-
-    /**
-     * Get all of the answers for the question.
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function answers()
-    {
-        return $this->hasMany(Answer::class);
     }
 }

@@ -32,6 +32,7 @@ return [
             'administration' => 'Administration',
             'change_password' => 'Change Password',
             'my_information' => 'My Information',
+            'my_tasks' => 'My Tasks',
         ],
     ],
 ];
