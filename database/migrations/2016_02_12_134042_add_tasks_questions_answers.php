@@ -15,7 +15,7 @@ class AddTasksQuestionsAnswers extends Migration
         Schema::create(config('quiz.tasks_questions_answers_table'), function (Blueprint $table) {
             $table->integer('task_id')->unsigned();
             $table->integer('question_id')->unsigned();
-            $table->integer('answer_id')->unsigned();
+            $table->integer('answer_id')->unsigned()->nullable()->default(null);
 
             /**
              * Add Foreign/Unique/Index

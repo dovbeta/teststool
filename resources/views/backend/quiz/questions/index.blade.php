@@ -26,6 +26,7 @@
                         <th>{{ trans('labels.backend.quiz.questions.table.id') }}</th>
                         <th>{{ trans('labels.backend.quiz.questions.table.title') }}</th>
                         <th>{{ trans('labels.backend.quiz.questions.table.description') }}</th>
+                        <th>{{ trans('labels.backend.quiz.questions.table.categories') }}</th>
                         <th>{{ trans('labels.general.actions') }}</th>
                     </tr>
                     </thead>
@@ -35,6 +36,7 @@
                                 <td>{!! $question->id !!}</td>
                                 <td>{!! $question->title !!}</td>
                                 <td>{!! $question->description !!}</td>
+                                <td>{!! implode(', ', $question->categories->pluck('name')->all()) !!}</td>
                                 <td>{!! $question->action_buttons !!}</td>
                             </tr>
                         @endforeach

@@ -3,6 +3,7 @@
 namespace App\Models\Quiz\Task\Traits\Relationship;
 use App\Models\Access\User\User;
 use App\Models\Quiz\Poll\Poll;
+use App\Models\Quiz\UserAnswer\UserAnswer;
 
 
 /**
@@ -30,5 +31,15 @@ trait TaskRelationship
     public function poll()
     {
         return $this->belongsTo(Poll::class);
+    }
+
+    /**
+     * Task has many user answers
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function userAnswers()
+    {
+        return $this->hasMany(UserAnswer::class);
     }
 }

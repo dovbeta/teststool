@@ -96,7 +96,7 @@
             </div>
 
             <div class="pull-right">
-                <input type="submit" class="btn btn-success btn-xs" value="{{ trans('buttons.general.crud.edit') }}" />
+                <input type="submit" class="btn btn-success btn-xs" value="{{ trans('buttons.general.crud.update') }}" />
             </div>
             <div class="clearfix"></div>
         </div><!-- /.box-body -->
