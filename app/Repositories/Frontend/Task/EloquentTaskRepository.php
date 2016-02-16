@@ -76,4 +76,15 @@ class EloquentTaskRepository implements TaskContract
             throw new GeneralException(trans('exceptions.frontend.quiz.tasks.not_possible_to_init'));
         }
     }
+
+    /**
+     * @param integer $task_id
+     * @param integer $per_page
+     */
+    public function getUserAnswersPaginated($task_id, $per_page)
+    {
+        $task = $this->findOrThrowException($task_id);
+
+        return $task->userAnswers()->paginate($per_page);
+    }
 }

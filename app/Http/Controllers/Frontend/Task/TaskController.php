@@ -49,7 +49,8 @@ class TaskController extends Controller
      */
     public function resume()
     {
-        //TODO: implement this
+        return view('frontend.tasks.resume')
+            ->withUserAnswers($this->tasks->getUserAnswersPaginated(1, 1));
     }
 
     public function index() {
