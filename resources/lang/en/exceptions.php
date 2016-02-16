@@ -71,6 +71,20 @@ return [
                 'update_error' => 'There was a problem updating this question. Please try again.',
                 'delete_error' => 'There was a problem deleting this question. Please try again.',
             ],
+
+            'polls' => [
+                'create_error' => 'There was a problem creating this poll. Please try again.',
+                'not_found' => 'That poll does not exist.',
+                'update_error' => 'There was a problem updating this poll. Please try again.',
+                'delete_error' => 'There was a problem deleting this poll. Please try again.',
+            ],
+
+            'tasks' => [
+                'create_error' => 'There was a problem creating this task. Please try again.',
+                'not_found' => 'That task does not exist.',
+                'update_error' => 'There was a problem updating this task. Please try again.',
+                'delete_error' => 'There was a problem deleting this task. Please try again.',
+            ],
         ],
     ],
 

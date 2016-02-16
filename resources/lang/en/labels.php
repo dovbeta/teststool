@@ -150,6 +150,7 @@ return [
                     'id' => 'ID',
                     'title' => 'Title',
                     'description' => 'Description',
+                    'categories' => 'Categories',
                     'total' => 'question total|questions total',
                 ],
             ],
@@ -175,9 +176,11 @@ return [
             'tasks' => [
                 'management' => 'Tasks management',
                 'all' => 'All tasks',
+                'all_for' => 'All tasks for :user',
                 'all_active' => 'All active tasks',
                 'all_completed' => 'All completed tasks',
                 'create' => 'Add task',
+                'create_for' => 'Add task for :user',
                 'edit' => 'Edit task',
                 'edit_for' => 'Edit task #:task_id for :user',
                 'no_other_categories' => 'No other tasks',
@@ -197,9 +200,23 @@ return [
                     'user_id' => 'User',
                     'status' => 'Status',
                     'test_start' => 'Test start',
-                    'spent_time' => 'Spent time',
+                    'spent_time' => 'Spent time (m)',
                     'total' => 'task|tasks total',
                     'assigned_at' => 'Assigned',
+                    'correct_answers' => 'Correct answers',
+                ],
+            ],
+
+            'results' => [
+                'management' => 'Results management',
+                'test_of_user' => 'Results of ":poll_name" test for :user_name',
+                'summary' => 'From :questions_num questions :user sent :answers_num answers, :correct_num of them are correct (:percent_num%)',
+
+                'table' => [
+                    'question' => 'Question',
+                    'description' => 'Description',
+                    'answer' => 'Answer',
+                    'footer_correct' => 'Correct: :correct_num (:percent_num%)'
                 ],
             ],
         ],

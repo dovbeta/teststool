@@ -9913,6 +9913,12 @@ table.text-center, table.text-center td, table.text-center th {
 .table.align td {
   text-align: right; }
 
+table.results .correct {
+  color: #00AA00; }
+
+table.results .invalid {
+  color: #AA0000; }
+
 /*
  * Component: Label
  * ----------------

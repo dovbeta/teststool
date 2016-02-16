@@ -117,6 +117,7 @@ return [
             'it' => 'Italian',
             'pt-BR' => 'Brazilian Portuguese',
             'sv' => 'Swedish',
+            'uk' => 'Ukrainian',
         ],
     ],
 ];
