@@ -296,6 +296,7 @@ return [
                     'status' => 'Status',
                     'total' => 'task|tasks total',
                     'actions' => 'Actions',
+                    'published' => 'Published',
                 ],
                 'status' => [
                     'PENDING' => 'Pending',
