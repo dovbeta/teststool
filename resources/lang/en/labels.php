@@ -285,6 +285,11 @@ return [
         'quiz' => [
             'tasks' => [
                 'title' => 'Tasks list',
+                'results' => 'Results',
+                'results_of' => 'Results of :poll',
+                'test_start' => 'Test start: :test_start',
+                'spent_time' => 'Spent time: :spent_time minutes',
+                'details' => 'Test start: :test_start; Spent time: :spent_time minutes',
                 'table' => [
                     'id' => 'ID',
                     'title' => 'Title',

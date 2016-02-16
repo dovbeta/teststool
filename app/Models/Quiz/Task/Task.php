@@ -14,6 +14,8 @@ class Task extends Model
 
     use TaskAttribute, TaskRelationship;
 
+    protected $dates = ['test_start'];
+
     protected $fillable = [
         'poll_id',
         'user_id',
