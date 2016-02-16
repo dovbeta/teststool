@@ -15,7 +15,7 @@ class TaskController extends Controller
     /**
      * @var TaskContract
      */
-    private $tasks
+    private $tasks;
 
     /**
      * @var EloquentUserRepository
@@ -37,7 +37,7 @@ class TaskController extends Controller
      */
     public function begin($id)
     {
-        $task = $this->taskContract->find($id);
+        $task = $this->tasks->find($id);
     }
 
     /**
