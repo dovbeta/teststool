@@ -27,6 +27,7 @@ return [
         'login' => 'Login',
         'macros' => 'Macros',
         'register' => 'Register',
+        'tasks' => 'Tasks',
 
         'user' => [
             'administration' => 'Administration',

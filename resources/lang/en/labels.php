@@ -284,6 +284,7 @@ return [
 
         'quiz' => [
             'tasks' => [
+                'title' => 'Tasks list',
                 'table' => [
                     'id' => 'ID',
                     'title' => 'Title',
