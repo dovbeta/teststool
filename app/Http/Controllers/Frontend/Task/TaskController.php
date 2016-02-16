@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend\Task;
 
 use App\Http\Controllers\Controller;
+use App\Repositories\Frontend\User\EloquentUserRepository;
 
 /**
  * Class FrontendController
@@ -10,6 +11,18 @@ use App\Http\Controllers\Controller;
  */
 class TaskController extends Controller
 {
+    /**
+     * @var EloquentUserRepository
+     */
+    protected $users;
+
+    /**
+     * @param EloquentUserRepository $users
+     */
+    public function __construct(EloquentUserRepository $users) {
+        $this->users = $users;
+    }
+
     /**
      * @return \Illuminate\View\View
      */
@@ -25,4 +38,11 @@ class TaskController extends Controller
     {
         //TODO: implement this
     }
+
+    public function index() {
+        return view('frontend.tasks.index')
+            ->withUser(access()->user())
+            ->withTasks($this->users->getTasksPaginated(config('quiz.tasks.default_per_page'), 1));
+    }
+
 }
