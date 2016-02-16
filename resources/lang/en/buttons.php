@@ -37,6 +37,7 @@ return [
             'tasks' => [
                 'begin' => 'Begin',
                 'continue' => 'Continue',
+                'results' => 'Results',
             ]
         ]
     ],

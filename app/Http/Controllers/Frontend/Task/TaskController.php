@@ -54,4 +54,10 @@ class TaskController extends Controller
             ->withTasks($this->users->getTasksPaginated(config('quiz.tasks.default_per_page'), 1));
     }
 
+    public function results($id) {
+        return view('frontend.tasks.results')
+            ->withUser(access()->user())
+            ->withTask($this->tasks->find($id));
+    }
+
 }

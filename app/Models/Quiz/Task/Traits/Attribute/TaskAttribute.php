@@ -61,12 +61,14 @@ trait TaskAttribute
     /**
      * @return string
      */
-    public function getBeginOrContinueButtonAttribute()
+    public function getMainActionButtonAttribute()
     {
         if ($this->isPending()) {
             return '<a href="' . route('frontend.tasks.begin', ['id' => $this->id]) . '" class="btn btn-xs btn-success"><i class="fa fa-play" data-toggle="tooltip" data-placement="top" title="' . trans('buttons.frontend.quiz.tasks.begin') . '"></i></a>';
         } elseif ($this->isInProgress()) {
-            return '<a href="' . route('frontend.tasks.resume', ['id' => $this->id]) . '" class="btn btn-xs btn-primary"><i class="fa fa-step-forward" data-toggle="tooltip" data-placement="top" title="' . trans('buttons.frontend.quiz.tasks.resume') . '"></i></a>';
+            return '<a href="' . route('frontend.tasks.resume', ['id' => $this->id]) . '" class="btn btn-xs btn-warning"><i class="fa fa-arrow-right" data-toggle="tooltip" data-placement="top" title="' . trans('buttons.frontend.quiz.tasks.continue') . '"></i></a>';
+        } elseif ($this->isCompleted()) {
+            return '<a href="' . route('frontend.tasks.results', ['id' => $this->id]) . '" class="btn btn-xs btn-info"><i class="fa fa-check" data-toggle="tooltip" data-placement="top" title="' . trans('buttons.frontend.quiz.tasks.results') . '"></i></a>';
         }
 
         return '';
@@ -85,8 +87,9 @@ trait TaskAttribute
                     $this->getResultsButtonAttribute();
                 break;
             case 'frontend.user.dashboard':
+            case 'frontend.tasks.index':
                 return
-                $this->getBeginOrContinueButtonAttribute();
+                $this->getMainActionButtonAttribute();
                 break;
             default:
                 return
