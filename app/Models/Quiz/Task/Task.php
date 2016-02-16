@@ -8,6 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Task extends Model
 {
+    const STATUS_COMPLETED      = 'COMPLETED';
+    const STATUS_PENDING        = 'PENDING';
+    const STATUS_IN_PROGRESS    = 'IN-PROGRESS';
+
     use TaskAttribute, TaskRelationship;
 
     protected $fillable = [
@@ -21,7 +25,7 @@ class Task extends Model
      * @return \Illuminate\Database\Eloquent\Builder
      */
     public function scopeActive($query) {
-        return $query->where('status', '<>', 'COMPLETED');
+        return $query->where('status', '<>', self::STATUS_COMPLETED);
     }
 
     /**
@@ -30,13 +34,6 @@ class Task extends Model
      * @return \Illuminate\Database\Eloquent\Builder
      */
     public function scopeCompleted($query) {
-        return $query->where('status', '=', 'COMPLETED');
+        return $query->where('status', '=', self::STATUS_COMPLETED);
     }
-
-
-    public function initQuestions()
-    {
-        //TODO: implement this
-    }
-
 }

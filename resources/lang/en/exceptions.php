@@ -110,5 +110,12 @@ return [
 
 
         ],
+
+        'quiz' => [
+            'tasks' => [
+                'not_found' => 'That task does not exist.',
+                'not_possible_to_init' => 'It\'s not possible to init that task.',
+            ],
+        ],
     ],
 ];

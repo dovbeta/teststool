@@ -10,6 +10,14 @@ class UserAnswer extends Model
 {
     use UserAnswerAttribute, UserAnswerRelationship;
 
+    /**
+     * {@inheritDoc}
+     */
+    public $timestamps = false;
+
+    /**
+     * {@inheritDoc}
+     */
     protected $table = 'tasks_questions_answers';
 
     /**

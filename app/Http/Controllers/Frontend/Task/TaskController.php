@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Frontend\Task;
 
+use App\Exceptions\GeneralException;
 use App\Http\Controllers\Controller;
 use App\Repositories\Frontend\Task\TaskContract;
 use App\Repositories\Frontend\User\EloquentUserRepository;
@@ -33,11 +34,14 @@ class TaskController extends Controller
     }
 
     /**
-     * @return \Illuminate\View\View
+     * @param $id
+     * @throws GeneralException
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function begin($id)
     {
-        $task = $this->tasks->find($id);
+        $this->tasks->init($id);
+        return redirect()->route('frontend.tasks.resume', ['id' => $id]);
     }
 
     /**

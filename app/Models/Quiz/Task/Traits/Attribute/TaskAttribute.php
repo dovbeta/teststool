@@ -114,11 +114,11 @@ trait TaskAttribute
     }
 
     public function isEditable() {
-        return ($this->status === 'PENDING');
+        return ($this->status === self::STATUS_PENDING);
     }
 
     public function isCompleted() {
-        return ($this->status === 'COMPLETED');
+        return ($this->status === self::STATUS_COMPLETED);
     }
 
     public function getCorrectPercentage() {
@@ -126,11 +126,11 @@ trait TaskAttribute
     }
 
     public function isPending() {
-        return ($this->status === 'PENDING');
+        return ($this->status === self::STATUS_PENDING);
     }
 
     public function isInProgress() {
-        return ($this->status === 'IN-PROGRESS');
+        return ($this->status === self::STATUS_IN_PROGRESS);
     }
 
 }

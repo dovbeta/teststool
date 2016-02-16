@@ -13,4 +13,10 @@ interface TaskContract
      * @return mixed
      */
     public function find($id);
+
+    /**
+     * @param $id
+     * @return mixed
+     */
+    public function init($id);
 }
