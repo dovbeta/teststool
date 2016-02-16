@@ -32,6 +32,15 @@ return [
         ],
     ],
 
+    'frontend' => [
+        'quiz' => [
+            'tasks' => [
+                'begin' => 'Begin',
+                'continue' => 'Continue',
+            ]
+        ]
+    ],
+
     'general' => [
         'cancel' => 'Cancel',
 

@@ -272,6 +272,12 @@ return [
                     'title' => 'Title',
                     'status' => 'Status',
                     'total' => 'task|tasks total',
+                    'actions' => 'Actions',
+                ],
+                'status' => [
+                    'PENDING' => 'Pending',
+                    'IN-PROGRESS' =>  'In progress',
+                    'COMPLETED' => 'Completed',
                 ],
             ],
         ],

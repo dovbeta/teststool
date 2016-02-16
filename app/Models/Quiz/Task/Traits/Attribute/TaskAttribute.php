@@ -61,13 +61,40 @@ trait TaskAttribute
     /**
      * @return string
      */
+    public function getBeginOrContinueButtonAttribute()
+    {
+        if ($this->isPending()) {
+            return '<a href="' . route('frontend.tasks.begin', ['id' => $this->id]) . '" class="btn btn-xs btn-success"><i class="fa fa-play" data-toggle="tooltip" data-placement="top" title="' . trans('buttons.frontend.quiz.tasks.begin') . '"></i></a>';
+        } elseif ($this->isInProgress()) {
+            return '<a href="' . route('frontend.tasks.resume', ['id' => $this->id]) . '" class="btn btn-xs btn-primary"><i class="fa fa-step-forward" data-toggle="tooltip" data-placement="top" title="' . trans('buttons.frontend.quiz.tasks.resume') . '"></i></a>';
+        }
+
+        return '';
+    }
+
+    /**
+     * @return string
+     */
     public function getActionButtonsAttribute()
     {
-        return ((Route::currentRouteName() == 'admin.access.user.tasks') ?
-            $this->getEditForUserButtonAttribute() :
-            $this->getEditButtonAttribute()) .
-            $this->getDeleteButtonAttribute().
-            $this->getResultsButtonAttribute();
+        switch (Route::currentRouteName()) {
+            case 'admin.access.user.tasks':
+                return
+                    $this->getEditForUserButtonAttribute() .
+                    $this->getDeleteButtonAttribute() .
+                    $this->getResultsButtonAttribute();
+                break;
+            case 'frontend.user.dashboard':
+                return
+                $this->getBeginOrContinueButtonAttribute();
+                break;
+            default:
+                return
+                    $this->getEditButtonAttribute() .
+                    $this->getDeleteButtonAttribute() .
+                    $this->getResultsButtonAttribute();
+                break;
+        }
     }
 
     /**
@@ -94,5 +121,12 @@ trait TaskAttribute
         return ($this->status === 'COMPLETED');
     }
 
+    public function isPending() {
+        return ($this->status === 'PENDING');
+    }
+
+    public function isInProgress() {
+        return ($this->status === 'IN-PROGRESS');
+    }
 
 }
