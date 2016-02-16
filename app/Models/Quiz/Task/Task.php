@@ -34,4 +34,9 @@ class Task extends Model
     }
 
 
+    public function initQuestions()
+    {
+        //TODO: implement this
+    }
+
 }

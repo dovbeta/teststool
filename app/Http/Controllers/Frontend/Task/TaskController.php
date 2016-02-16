@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend\Task;
 
 use App\Http\Controllers\Controller;
+use App\Repositories\Frontend\Task\TaskContract;
 
 /**
  * Class FrontendController
@@ -11,11 +12,21 @@ use App\Http\Controllers\Controller;
 class TaskController extends Controller
 {
     /**
+     * @var TaskContract
+     */
+    private $taskContract;
+
+    public function __construct(TaskContract $taskContract)
+    {
+        $this->taskContract = $taskContract;
+    }
+
+    /**
      * @return \Illuminate\View\View
      */
-    public function begin()
+    public function begin($id)
     {
-        //TODO: implement this
+        $task = $this->taskContract->find($id);
     }
 
     /**
