@@ -32,8 +32,9 @@ class UserAnswer extends Model
     /**
      * {@inheritDoc}
      */
-    public function __construct()
+    public function __construct(array $attributes = [])
     {
         $this->table = config('quiz.tasks_questions_answers_table');
+        parent::__construct($attributes);
     }
 }
