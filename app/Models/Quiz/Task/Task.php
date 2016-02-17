@@ -4,6 +4,7 @@ namespace App\Models\Quiz\Task;
 
 use App\Models\Quiz\Task\Traits\Attribute\TaskAttribute;
 use App\Models\Quiz\Task\Traits\Relationship\TaskRelationship;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
 class Task extends Model
@@ -14,7 +15,15 @@ class Task extends Model
 
     use TaskAttribute, TaskRelationship;
 
-    protected $dates = ['test_start'];
+    /**
+     * {@inheritDoc}
+     */
+    protected $guarded = ['id'];
+
+    /**
+     * {@inheritDoc}
+     */
+    protected $dates = ['started_at', 'finished_at'];
 
     protected $fillable = [
         'poll_id',
@@ -37,5 +46,13 @@ class Task extends Model
      */
     public function scopeCompleted($query) {
         return $query->where('status', '=', self::STATUS_COMPLETED);
+    }
+
+    /**
+     * @return string
+     */
+    public function getSpentTimeAttribute()
+    {
+        return $this->finished_at->diffInMinutes($this->started_at);
     }
 }

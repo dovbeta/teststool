@@ -175,7 +175,7 @@ return [
                     'poll_id' => 'Poll',
                     'poll_hint' => 'Select poll',
                     'status' => 'Status',
-                    'test_start' => 'Test start',
+                    'started_at' => 'Started at',
                     'spent_time' => 'Spent time',
                 ],
             ]

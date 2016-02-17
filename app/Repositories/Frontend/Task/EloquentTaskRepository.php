@@ -3,8 +3,10 @@
 namespace App\Repositories\Frontend\Task;
 
 use App\Exceptions\GeneralException;
+use App\Http\Requests\Frontend\Quiz\UpdateUserAnswerRequest;
 use App\Models\Quiz\Question\Question;
 use App\Models\Quiz\Task\Task;
+use App\Models\Quiz\UserAnswer\UserAnswer;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Collection;
 
@@ -67,10 +69,11 @@ class EloquentTaskRepository implements TaskContract
                 }
 
                 $task->status = Task::STATUS_IN_PROGRESS;
-                $task->test_start = Carbon::now();
+                $task->started_at = Carbon::now();
 
                 $task->save();
-                return;
+
+                return true;
             }
 
             throw new GeneralException(trans('exceptions.frontend.quiz.tasks.not_possible_to_init'));
@@ -78,13 +81,50 @@ class EloquentTaskRepository implements TaskContract
     }
 
     /**
-     * @param integer $task_id
-     * @param integer $per_page
+     * @param $id
+     * @throws GeneralException
+     * @return mixed
      */
-    public function getUserAnswersPaginated($task_id, $per_page)
+    public function finish($id)
     {
-        $task = $this->findOrThrowException($task_id);
+        $task = $this->findOrThrowException($id);
 
-        return $task->userAnswers()->paginate($per_page);
+        if ($task->isInProgress()) {
+            $task->status = Task::STATUS_COMPLETED;
+            $task->finished_at = Carbon::now();
+
+            $task->save();
+
+            return true;
+        }
+
+        throw new GeneralException(trans('exceptions.frontend.quiz.tasks.not_possible_to_init'));
+    }
+
+    /**
+     * @param integer $task_id
+     * @return mixed
+     */
+    public function getUnAnsweredUserAnswer($task_id)
+    {
+        return UserAnswer::where(['task_id' => $task_id, 'answer_id' => null])->orderBy('id', 'asc')->first();
+    }
+
+    /**
+     * @param integer $task_id
+     * @param integer $question_id
+     * @param $input
+     * @return boolean
+     * @throws GeneralException
+     */
+    public function updateUserAnswer($task_id, $question_id, $input)
+    {
+        $user_answer = UserAnswer::where(['task_id' => $task_id, 'question_id' => $question_id])->first();
+
+        if ($user_answer && $user_answer->update($input)) {
+            return true;
+        }
+
+        throw new GeneralException(trans('exceptions.frontend.quiz.tasks.user_answers.update_error'));
     }
 }

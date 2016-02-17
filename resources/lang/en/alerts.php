@@ -67,4 +67,10 @@ return [
             'updated' => 'The task was successfully updated.',
         ],
     ],
+
+    'frontend' => [
+        'tasks' => [
+            'finished' => 'The task was finished.',
+        ]
+    ]
 ];

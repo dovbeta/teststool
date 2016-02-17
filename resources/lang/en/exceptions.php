@@ -115,6 +115,9 @@ return [
             'tasks' => [
                 'not_found' => 'That task does not exist.',
                 'not_possible_to_init' => 'It\'s not possible to init that task.',
+                'user_answers' => [
+                    'update_error' => 'There was a problem updating this user answer. Please try again.',
+                ]
             ],
         ],
     ],

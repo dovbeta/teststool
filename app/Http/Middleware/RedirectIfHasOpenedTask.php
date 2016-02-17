@@ -3,11 +3,10 @@
 namespace App\Http\Middleware;
 
 use Closure;
-use Illuminate\Support\Facades\Auth;
 use Route;
 
 /**
- * Class RedirectIfAuthenticated
+ * Class RedirectIfHasOpenedTask
  * @package App\Http\Middleware
  */
 class RedirectIfHasOpenedTask
@@ -23,7 +22,11 @@ class RedirectIfHasOpenedTask
     {
         if ($request->user()) {
             foreach ($request->user()->tasks as $task) {
-                if ($task->status === 'IN-PROGRESS' && Route::currentRouteName() != 'frontend.tasks.resume') {
+                if (
+                    $task->status === 'IN-PROGRESS' &&
+                    Route::currentRouteName() != 'frontend.tasks.resume' &&
+                    Route::currentRouteName() != 'frontend.tasks.update'
+                ) {
                    return redirect()->route('frontend.tasks.resume', [$task->id]);
                 }
             }

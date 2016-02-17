@@ -199,7 +199,8 @@ return [
                     'poll_id' => 'Poll',
                     'user_id' => 'User',
                     'status' => 'Status',
-                    'test_start' => 'Test start',
+                    'started_at' => 'Started At',
+                    'finished_at' => 'Finished At',
                     'spent_time' => 'Spent time (m)',
                     'total' => 'task|tasks total',
                     'assigned_at' => 'Assigned',
@@ -287,9 +288,10 @@ return [
                 'title' => 'Tasks list',
                 'results' => 'Results',
                 'results_of' => 'Results of :poll',
-                'test_start' => 'Test start: :test_start',
+                'started_at' => 'Started at: :started_at',
+                'finished_at' => 'Finished at: :finished_at',
                 'spent_time' => 'Spent time: :spent_time minutes',
-                'details' => 'Test start: :test_start; Spent time: :spent_time minutes',
+                'details' => 'Started at: :started_at; Spent time: :spent_time minutes',
                 'table' => [
                     'id' => 'ID',
                     'title' => 'Title',
@@ -306,6 +308,10 @@ return [
                     'COMPLETED' => 'Completed',
                 ],
             ],
+
+            'questions' => [
+                'total' => 'question|questions total',
+            ]
         ],
     ],
 ];

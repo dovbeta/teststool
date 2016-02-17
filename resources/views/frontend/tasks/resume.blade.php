@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="col-md-10 col-md-offset-1">
-        @foreach ($user_answers as $user_answer)
+            {!! Form::model($task, ['route' => ['frontend.tasks.update', $task->id, $user_answer->question_id], 'class' => 'form-horizontal', 'role' => 'form', 'method' => 'PATCH']) !!}
             <div class="panel panel-primary">
                 <div class="panel-heading">
                     <h3 class="panel-title">
@@ -14,18 +14,27 @@
                     @foreach ($user_answer->question->answers as $answer)
                         <div class="radio">
                             <label>
-                                <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked="">{!! $answer->title !!}
+                                {!! Form::radio("answer_id", $answer->id, $user_answer->answer ? $user_answer->answer->id == $answer->id : null) !!} {!! $answer->title !!}
                             </label>
                         </div>
                     @endforeach
                 </div>
                 <div class="panel-footer">
-                    <a href="#" class="btn btn-primary " role="button">Confirm</a>
-                    <a href="#" class="btn btn-default disabled" role="button">Next</a>
+                    <input type="submit" class="btn btn-primary" value="Confirm" />
                 </div>
             </div>
-        @endforeach
-        <div class="col-md-1 column">
+            {!! Form::close() !!}
+    </div>
+    <div class="col-md-10 col-md-offset-1 container"  id="pagination-container">
+        <div class="row">
+            <div class="col-md-6">
+
+            </div>
+            <div class="col-md-6">
+                <div class="pull-right">
+
+                </div>
+            </div>
         </div>
     </div>
 @endsection

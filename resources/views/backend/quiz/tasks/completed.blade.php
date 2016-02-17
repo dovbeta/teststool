@@ -29,7 +29,8 @@
                         <th>{{ trans('labels.backend.quiz.tasks.table.poll_id') }}</th>
                         <th>{{ trans('labels.backend.quiz.tasks.table.assigned_at') }}</th>
                         <th>{{ trans('labels.backend.quiz.tasks.table.status') }}</th>
-                        <th>{{ trans('labels.backend.quiz.tasks.table.test_start') }}</th>
+                        <th>{{ trans('labels.backend.quiz.tasks.table.started_at') }}</th>
+                        <th>{{ trans('labels.backend.quiz.tasks.table.finished_at') }}</th>
                         <th>{{ trans('labels.backend.quiz.tasks.table.spent_time') }}</th>
                         <th>{{ trans('labels.backend.quiz.tasks.table.correct_answers') }}</th>
                         <th>{{ trans('labels.general.actions') }}</th>
@@ -40,11 +41,12 @@
                             <tr>
                                 <td>{!! $task->id !!}</td>
                                 <td>{!! $task->user->name !!}</td>
-                                <td>{!! $task->poll->title!!}</td>
+                                <td>{!! $task->poll->title !!}</td>
                                 <td>{!! $task->updated_at->format('Y-m-d H:i') !!} <small>({!! $task->updated_at->diffForHumans() !!})</small></td>
                                 <td>{{ trans('labels.backend.quiz.tasks.status.' . $task->status) }}</td>
-                                <td>{!! $task->test_start!!}</td>
-                                <td>{!! $task->spent_time!!}</td>
+                                <td>{!! $task->started_at !!}</td>
+                                <td>{!! $task->finished_at !!}</td>
+                                <td>{!! $task->spent_time !!}</td>
                                 <td>{!! number_format($task->getCorrectPercentage(), 2)!!}%</td>
                                 <td>{!! $task->action_buttons !!}</td>
                             </tr>

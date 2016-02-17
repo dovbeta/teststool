@@ -7827,6 +7827,8 @@ button.close {
 /**
  * Frontend Styles Start Here
  */
+#pagination-container .pagination {
+  margin: 0; }
 
 body.stop-scrolling {
   height: 100%;

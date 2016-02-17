@@ -13,12 +13,12 @@ class UserAnswer extends Model
     /**
      * {@inheritDoc}
      */
-    public $timestamps = false;
+    protected $guarded = ['id'];
 
     /**
      * {@inheritDoc}
      */
-    protected $table = 'tasks_questions_answers';
+    public $timestamps = false;
 
     /**
      * {@inheritDoc}
@@ -28,4 +28,12 @@ class UserAnswer extends Model
         'question_id',
         'answer_id'
     ];
+
+    /**
+     * {@inheritDoc}
+     */
+    public function __construct()
+    {
+        $this->table = config('quiz.tasks_questions_answers_table');
+    }
 }

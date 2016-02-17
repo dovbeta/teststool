@@ -7,7 +7,8 @@
                 {{ trans('labels.frontend.quiz.tasks.results_of', ['poll' => $task->poll->title]) }}
             </h1>
             <blockquote>
-                <p>{{ trans('labels.frontend.quiz.tasks.test_start', ['test_start' => $task->test_start->format('Y-m-d H:i')]) }}</p>
+                <p>{{ trans('labels.frontend.quiz.tasks.started_at', ['started_at' => $task->started_at->format('Y-m-d H:i')]) }}</p>
+                <p>{{ trans('labels.frontend.quiz.tasks.finished_at', ['finished_at' => $task->finished_at->format('Y-m-d H:i')]) }}</p>
                 <p>{{ trans('labels.frontend.quiz.tasks.spent_time', ['spent_time' => $task->spent_time]) }}</p>
             </blockquote>
             <div class="table-responsive">

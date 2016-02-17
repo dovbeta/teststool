@@ -13,6 +13,7 @@ class AddTasksQuestionsAnswers extends Migration
     public function up()
     {
         Schema::create(config('quiz.tasks_questions_answers_table'), function (Blueprint $table) {
+            $table->increments('id');
             $table->integer('task_id')->unsigned();
             $table->integer('question_id')->unsigned();
             $table->integer('answer_id')->unsigned()->nullable()->default(null);
