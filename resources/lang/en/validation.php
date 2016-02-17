@@ -158,6 +158,7 @@ return [
                     'answer' => 'Answer',
                     'numbered_answer' => 'Answer #:number',
                     'is_correct' => 'Is correct',
+                    'filter_by_category' => 'Filter by category',
                 ],
 
                 'polls' => [

@@ -41,19 +41,22 @@ class QuestionController extends Controller
     /**
      * @return mixed
      */
-    public function index() {
+    public function index($category_id = 0) {
         return view('backend.quiz.questions.index')
-            ->withQuestions($this->questions->getQuestionsPaginated(config('quiz.questions.default_per_page'), 1));
+            ->withQuestions($this->questions->getQuestionsPaginated(config('quiz.questions.default_per_page'), $category_id))
+            ->withCategories($this->categories->getAllCategories())
+            ->withCategory($category_id);
     }
 
     /**
      * @param  CreateQuestionRequest $request
      * @return mixed
      */
-    public function create(CreateQuestionRequest $request)
+    public function create(CreateQuestionRequest $request, $category_id = 0)
     {
         return view('backend.quiz.questions.create')
-            ->withCategories($this->categories->getAllCategories());
+            ->withCategories($this->categories->getAllCategories())
+            ->withCategoryId($category_id);
     }
 
     /**
@@ -67,7 +70,16 @@ class QuestionController extends Controller
             $request->only('question_answers'),
             $request->only('question_categories')
         );
-        return redirect()->route('admin.quiz.questions.index')->withFlashSuccess(trans('alerts.backend.questions.created'));
+        $goToNew = $request->get('new', false);
+        if ($goToNew) {
+            if (count($request->get('question_categories')) == 1) {
+                return redirect()->route('quiz.questions.create.category', $request->get('question_categories')[0])->withFlashSuccess(trans('alerts.backend.questions.created'));
+            } else {
+                return redirect()->route('admin.quiz.questions.create')->withFlashSuccess(trans('alerts.backend.questions.created'));
+            }
+        } else {
+            return redirect()->route('admin.quiz.questions.index')->withFlashSuccess(trans('alerts.backend.questions.created'));
+        }
     }
 
     /**

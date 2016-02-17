@@ -18,7 +18,7 @@ interface QuestionContract
      * @param  $per_page
      * @return mixed
      */
-    public function getQuestionsPaginated($per_page);
+    public function getQuestionsPaginated($per_page, $category_id);
 
     /**
      * @param $input

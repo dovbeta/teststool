@@ -34,8 +34,11 @@ class EloquentQuestionRepository implements QuestionContract
      * @param  $per_page
      * @return mixed
      */
-    public function getQuestionsPaginated($per_page)
+    public function getQuestionsPaginated($per_page, $category_id = 0)
     {
+        if ($category_id) {
+            return Question::join('category_question', 'category_question.question_id', '=', 'id')->where('category_question.category_id', '=', $category_id)->paginate($per_page);
+        }
         return Question::paginate($per_page);
     }
 

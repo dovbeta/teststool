@@ -50,6 +50,7 @@ return [
             'delete' => 'Delete',
             'edit' => 'Edit',
             'update' => 'Update',
+            'create-and-new' => 'Create and add new',
         ],
 
         'save' => 'Save',

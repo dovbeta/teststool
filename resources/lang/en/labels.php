@@ -294,6 +294,8 @@ return [
                     'id' => 'ID',
                     'title' => 'Title',
                     'status' => 'Status',
+                    'questions' => 'Questions',
+                    'time_limit' => 'Time limit',
                     'total' => 'task|tasks total',
                     'actions' => 'Actions',
                     'published' => 'Published',

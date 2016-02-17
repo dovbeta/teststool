@@ -69,7 +69,7 @@
                             <div class="col-lg-3">
                                 <ul style="margin:0;padding:0;list-style:none;">
                                     @foreach ($category as $cat)
-                                        <li><input type="checkbox" value="{{$cat['id']}}" name="question_categories[]" id="category-{{$cat['id']}}">
+                                        <li><input type="checkbox" value="{{$cat['id']}}" name="question_categories[]" {{ $cat['id']==$category_id ? 'checked' : ""}} id="category-{{$cat['id']}}">
                                             <label for="category-{{$cat['id']}}">
                                                 {!! $cat['name'] !!} ({!! $cat['code'] !!})
                                             </label>
@@ -94,6 +94,7 @@
 
             <div class="pull-right">
                 <input type="submit" class="btn btn-success btn-xs" value="{{ trans('buttons.general.crud.create') }}" />
+                <input type="submit" class="btn btn-primary btn-xs" name="new" value="{{ trans('buttons.general.crud.create-and-new') }}" />
             </div>
             <div class="clearfix"></div>
         </div><!-- /.box-body -->

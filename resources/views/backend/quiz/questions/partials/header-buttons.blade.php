@@ -12,6 +12,14 @@
           </ul>
         </div><!--btn group-->
 
+        <div class="btn-group">
+            @if (isset($category))
+            <a href="{{ route('quiz.questions.create.category', $category) }}" class="btn btn-primary btn-xs dropdown-toggle">{{ trans('menus.backend.quiz.questions.create') }}</a>
+            @else
+            <a href="{{ route('admin.quiz.questions.create') }}" class="btn btn-primary btn-xs dropdown-toggle">{{ trans('menus.backend.quiz.questions.create') }}</a>
+            @endif
+        </div><!--btn group-->
+
 
     </div><!--pull right-->
 
