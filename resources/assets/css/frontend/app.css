@@ -7848,6 +7848,12 @@ pre {
       margin-top: -8px;
       line-height: 10px; } }
 
+table.results .correct {
+  color: #00AA00; }
+
+table.results .invalid {
+  color: #AA0000; }
+
 body.stop-scrolling {
   height: 100%;
   overflow: hidden; }

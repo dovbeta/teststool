@@ -29,3 +29,11 @@ pre {
     }
   }
 }
+
+table.results .correct {
+  color: #00AA00;
+}
+
+table.results .invalid {
+  color: #AA0000;
+}
