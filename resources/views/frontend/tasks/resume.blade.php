@@ -2,8 +2,18 @@
 
 @section('content')
     <div class="col-md-10 col-md-offset-1">
-            <p class="lead pull-left">{!! trans('labels.frontend.quiz.tasks.progress-text', ['current' => $task->current, 'total' => $task->total]) !!}</p>
-            <p class="lead pull-right">{!! trans('labels.frontend.quiz.tasks.progress', ['progress' => $task->progress]) !!}</p>
+            <div class="row">
+                <div class="col-md-4">
+                    <p class="pull-left">{!! trans('labels.frontend.quiz.tasks.progress-text', ['current' => $task->current, 'total' => $task->total]) !!}</p>
+                </div>
+                <div class="col-md-4">
+                    <p id="countdown" class="text-center"></p>
+                </div>
+                <div class="col-md-4">
+                    <p class="pull-right">{!! trans('labels.frontend.quiz.tasks.progress', ['progress' => $task->progress]) !!}</p>
+                </div>
+            </div>
+
             <div class="clearfix"></div>
             <div class="progress">
                 <div class="progress-bar" role="progressbar" style="width: {!! $task->progress !!}%;"></div>&nbsp;<div class="fa fa-wheelchair"></div>
@@ -46,4 +56,16 @@
             </div>
         </div>
     </div>
+@endsection
+@section('after-scripts-end')
+    <script>
+        $(function(){
+            var countdownDate = moment().add({!! $task->remain_seconds !!}, 'seconds');
+            $('#countdown').countdown(countdownDate.toDate(), function(event) {
+                $(this).html(event.strftime('%H:%M:%S'));
+            }).on('finish.countdown', function() {
+                location.reload();
+            });
+        });
+    </script>
 @endsection

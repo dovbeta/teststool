@@ -51,9 +51,11 @@ class TaskController extends Controller
      */
     public function resume($id)
     {
-        if ($userAnswer = $this->tasks->getUnAnsweredUserAnswer($id)) {
+        $task = $this->tasks->find($id);
+
+        if ($task->remain_seconds > 0 && $userAnswer = $this->tasks->getUnAnsweredUserAnswer($id)) {
             return view('frontend.tasks.resume')
-                ->withTask($this->tasks->find($id))
+                ->withTask($task)
                 ->withUserAnswer($userAnswer);
         } else {
             $this->tasks->finish($id);
@@ -69,7 +71,11 @@ class TaskController extends Controller
      */
     public function updateUserAnswer($task_id, $question_id, UpdateUserAnswerRequest $request)
     {
-        $this->tasks->updateUserAnswer($task_id, $question_id, $request->only(['answer_id']));
+        $task = $this->tasks->find($task_id);
+
+        if ($task->remain_seconds > 0) {
+            $this->tasks->updateUserAnswer($task_id, $question_id, $request->only(['answer_id']));
+        }
 
         return redirect()->route('frontend.tasks.resume', $task_id);
     }
