@@ -41,7 +41,7 @@ trait UserAttribute
     public function getPictureAttribute()
     {
 //        return gravatar()->get($this->email, ['size' => 50]);
-        return "http://api.adorable.io/avatars/90/{$this->email}.io.png";
+        return "http://api.adorable.io/avatars/90/{$this->email}.png";
     }
 
     /**
