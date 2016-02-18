@@ -18,4 +18,8 @@ class Question extends Model
         'description',
     ];
 
+    public function newQuery($excludeDeleted = true) {
+        return parent::newQuery()->orderBy('id');
+    }
+
 }

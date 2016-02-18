@@ -17,4 +17,9 @@ class Poll extends Model
         'time_limit',
     ];
 
+    public function newQuery($excludeDeleted = true)
+    {
+        return parent::newQuery()->orderBy('title');
+    }
+
 }
