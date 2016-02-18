@@ -292,6 +292,8 @@ return [
                 'finished_at' => 'Finished at: :finished_at',
                 'spent_time' => 'Spent time: :spent_time minutes',
                 'details' => 'Started at: :started_at; Spent time: :spent_time minutes',
+                'progress' => 'Completed :progress%',
+                'progress-text' => 'Question :current of :total.',
                 'table' => [
                     'id' => 'ID',
                     'title' => 'Title',

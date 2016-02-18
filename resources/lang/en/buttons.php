@@ -38,6 +38,7 @@ return [
                 'begin' => 'Begin',
                 'continue' => 'Continue',
                 'results' => 'Results',
+                'confirm' => 'Confirm'
             ]
         ]
     ],

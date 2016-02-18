@@ -2,6 +2,13 @@
 
 @section('content')
     <div class="col-md-10 col-md-offset-1">
+            <p class="lead pull-left">{!! trans('labels.frontend.quiz.tasks.progress-text', ['current' => $task->current, 'total' => $task->total]) !!}</p>
+            <p class="lead pull-right">{!! trans('labels.frontend.quiz.tasks.progress', ['progress' => $task->progress]) !!}</p>
+            <div class="clearfix"></div>
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" style="width: {!! $task->progress !!}%;"></div>
+            </div>
+
             {!! Form::model($task, ['route' => ['frontend.tasks.update', $task->id, $user_answer->question_id], 'class' => 'form-horizontal', 'role' => 'form', 'method' => 'PATCH']) !!}
             <div class="panel panel-primary">
                 <div class="panel-heading">
@@ -20,7 +27,7 @@
                     @endforeach
                 </div>
                 <div class="panel-footer">
-                    <input type="submit" class="btn btn-primary" value="Confirm" />
+                    <input type="submit" class="btn btn-primary" value="{!! trans('buttons.frontend.quiz.tasks.confirm') !!}" />
                 </div>
             </div>
             {!! Form::close() !!}
