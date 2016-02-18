@@ -57,7 +57,7 @@ class TaskController extends Controller
                 ->withUserAnswer($userAnswer);
         } else {
             $this->tasks->finish($id);
-            return redirect()->route('frontend.tasks.index')->withFlashSuccess(trans('alerts.frontend.tasks.finished'));
+            return redirect()->route('frontend.tasks.results', ['id' => $id])->withFlashSuccess(trans('alerts.frontend.tasks.finished'));
         }
     }
 
