@@ -32,12 +32,25 @@ class EloquentTaskRepository implements TaskContract
     }
 
     /**
-     * @param  $per_page
+     * @param $per_page
+     * @param int $user_id
+     * @param int $poll_id
+     * @param int $status
      * @return mixed
      */
-    public function getTasksPaginated($per_page)
+    public function getTasksPaginated($per_page, $user_id = null, $poll_id = null, $status = null)
     {
-        return Task::paginate($per_page);
+        $tasks = Task::query();
+        if ($user_id) {
+            $tasks->where('user_id', '=', $user_id);
+        }
+        if ($poll_id) {
+            $tasks->where('poll_id', '=', $poll_id);
+        }
+        if ($status) {
+            $tasks->where('status', '=', $status);
+        }
+        return $tasks->paginate($per_page);
     }
 
     /**

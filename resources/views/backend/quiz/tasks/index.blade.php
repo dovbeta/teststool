@@ -14,9 +14,7 @@
         <div class="box-header with-border">
             <h3 class="box-title">{{ trans('labels.backend.quiz.tasks.all') }}</h3>
 
-            <div class="box-tools pull-right">
-                @include('backend.quiz.tasks.partials.header-buttons')
-            </div>
+            @include('backend.quiz.tasks.partials.header-buttons')
         </div><!-- /.box-header -->
 
         <div class="box-body">
@@ -39,7 +37,11 @@
                                 <td>{!! $task->user->name !!}</td>
                                 <td>{!! $task->poll->title!!}</td>
                                 <td>{!! $task->updated_at->format('Y-m-d H:i') !!} <small>({!! $task->updated_at->diffForHumans() !!})</small></td>
-                                <td>{{ trans('labels.backend.quiz.tasks.status.' . $task->status) }}</td>
+                                <td>{{ trans('labels.backend.quiz.tasks.status.' . $task->status) }}
+                                    @if($task->status == 'COMPLETED')
+                                        ({{ trans('labels.backend.quiz.tasks.result') }}: {{ number_format($task->getCorrectPercentage(), 0) }}%)
+                                    @endif
+                                </td>
                                 <td>{!! $task->action_buttons !!}</td>
                             </tr>
                         @endforeach
