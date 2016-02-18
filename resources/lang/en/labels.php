@@ -135,6 +135,7 @@ return [
                     'id' => 'ID',
                     'name' => 'Name',
                     'code' => 'Code',
+                    'questions' => 'Questions in category',
                     'total' => 'category total|categories total',
                 ],
             ],
@@ -188,6 +189,8 @@ return [
                 'completed_tasks' => 'Completed tasks',
                 'active_tasks_for' => 'Active tasks for :user',
                 'completed_tasks_for' => 'Completed tasks for :user',
+                'result' => 'Result',
+                'filters' => 'Filters',
                 'status' => [
                     'PENDING' => 'Pending',
                     'IN-PROGRESS' =>  'In progress',

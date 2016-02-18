@@ -26,6 +26,7 @@
                         <th>{{ trans('labels.backend.quiz.categories.table.id') }}</th>
                         <th>{{ trans('labels.backend.quiz.categories.table.name') }}</th>
                         <th>{{ trans('labels.backend.quiz.categories.table.code') }}</th>
+                        <th>{{ trans('labels.backend.quiz.categories.table.questions') }}</th>
                         <th>{{ trans('labels.general.actions') }}</th>
                     </tr>
                     </thead>
@@ -35,6 +36,7 @@
                                 <td>{!! $category->id !!}</td>
                                 <td>{!! $category->name !!}</td>
                                 <td>{!! $category->code !!}</td>
+                                <td>{!! $category->questions->count() !!}</td>
                                 <td>{!! $category->action_buttons !!}</td>
                             </tr>
                         @endforeach

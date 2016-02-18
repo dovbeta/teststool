@@ -14,6 +14,7 @@ use App\Models\Access\User\User;
 use App\Models\Quiz\Poll\Poll;
 use App\Repositories\Backend\Task\TaskContract;
 use GuzzleHttp\Pool;
+use Illuminate\Support\Facades\Input;
 
 class TaskController extends Controller
 {
@@ -34,8 +35,21 @@ class TaskController extends Controller
      * @return mixed
      */
     public function index() {
+        $user_id = Input::get('user_id');
+        $poll_id = Input::get('poll_id');
+        $status = Input::get('status');
         return view('backend.quiz.tasks.index')
-            ->withTasks($this->tasks->getTasksPaginated(config('quiz.tasks.default_per_page'), 1));
+            ->withTasks($this->tasks->getTasksPaginated(config('quiz.tasks.default_per_page'), $user_id, $poll_id, $status))
+            ->withUsers(User::all()->pluck('name', 'id'))
+            ->withPolls(Poll::all()->pluck('title', 'id'))
+            ->withStatuses([
+                'PENDING' => trans('labels.backend.quiz.tasks.status.PENDING'),
+                'IN-PROGRESS' => trans('labels.backend.quiz.tasks.status.IN-PROGRESS'),
+                'COMPLETED' => trans('labels.backend.quiz.tasks.status.COMPLETED'),
+            ])
+            ->withUser($user_id)
+            ->withPoll($poll_id)
+            ->withStatus($status);
     }
 
     /**

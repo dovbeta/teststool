@@ -6,7 +6,7 @@
             <p class="lead pull-right">{!! trans('labels.frontend.quiz.tasks.progress', ['progress' => $task->progress]) !!}</p>
             <div class="clearfix"></div>
             <div class="progress">
-                <div class="progress-bar" role="progressbar" style="width: {!! $task->progress !!}%;"></div>
+                <div class="progress-bar" role="progressbar" style="width: {!! $task->progress !!}%;"></div>&nbsp;<div class="fa fa-wheelchair"></div>
             </div>
 
             {!! Form::model($task, ['route' => ['frontend.tasks.update', $task->id, $user_answer->question_id], 'class' => 'form-horizontal', 'role' => 'form', 'method' => 'PATCH']) !!}

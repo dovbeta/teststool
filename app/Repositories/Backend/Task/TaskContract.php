@@ -18,7 +18,7 @@ interface TaskContract
      * @param  $per_page
      * @return mixed
      */
-    public function getTasksPaginated($per_page);
+    public function getTasksPaginated($per_page, $user_id = null, $poll_id = null, $status = null);
 
     /**
      * @param  $per_page

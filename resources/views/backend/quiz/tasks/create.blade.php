@@ -17,7 +17,6 @@
             <h3 class="box-title">{{ trans('labels.backend.quiz.tasks.create') }}</h3>
 
             <div class="box-tools pull-right">
-                @include('backend.quiz.tasks.partials.header-buttons')
             </div>
         </div><!-- /.box-header -->
 
