@@ -291,6 +291,9 @@ return [
                 'started_at' => 'Started at: :started_at',
                 'finished_at' => 'Finished at: :finished_at',
                 'spent_time' => 'Spent time: :spent_time minutes',
+                'questions' => 'Total questions: :questions',
+                'sent_answers' => 'Sent answers: :answers',
+                'correct_answers' => 'Correct answers: :answers (:percents%)',
                 'details' => 'Started at: :started_at; Spent time: :spent_time minutes',
                 'table' => [
                     'id' => 'ID',
@@ -311,7 +314,11 @@ return [
 
             'questions' => [
                 'total' => 'question|questions total',
-            ]
+            ],
+
+            'results' => [
+                'summary' => 'From :questions_num questions you sent :answers_num answers, :correct_num of them are correct (:percent_num%)',
+            ],
         ],
     ],
 ];
