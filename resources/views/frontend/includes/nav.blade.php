@@ -21,7 +21,9 @@
             <!-- Left Side Of Navbar -->
             <ul class="nav navbar-nav">
                 <li>{!! link_to_route('frontend.index', trans('navs.frontend.home')) !!}</li>
+                @if (!Auth::guest())
                 <li>{!! link_to_route('frontend.tasks.index', trans('navs.frontend.tasks')) !!}</li>
+                @endif
             </ul>
 
             <!-- Right Side Of Navbar -->

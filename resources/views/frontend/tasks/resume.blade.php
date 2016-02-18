@@ -17,7 +17,9 @@
                     </h3>
                 </div>
                 <div class="panel-body">
+                    @if ($user_answer->question->description)
                     <p class="lead"><pre>{{ $user_answer->question->description }}</pre></p>
+                    @endif
                     @foreach ($user_answer->question->answers as $answer)
                         <div class="radio">
                             <label>

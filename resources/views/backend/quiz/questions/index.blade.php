@@ -26,6 +26,7 @@
                 <table class="table table-striped table-bordered table-hover">
                     <thead>
                     <tr>
+                        <th>{{ trans('labels.backend.quiz.questions.table.id') }}</th>
                         <th>{{ trans('labels.backend.quiz.questions.table.title') }}</th>
                         <th>{{ trans('labels.backend.quiz.questions.table.description') }}</th>
                         <th>{{ trans('labels.backend.quiz.questions.table.categories') }}</th>
@@ -35,6 +36,7 @@
                     <tbody>
                     @foreach ($questions as $question)
                         <tr>
+                            <td>{{ $question->id }}</td>
                             <td>{{ $question->title }}</td>
                             <td><pre>{{ $question->description }}</pre></td>
                             <td>{{ implode(', ', $question->categories->pluck('name')->all()) }}</td>

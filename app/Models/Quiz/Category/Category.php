@@ -15,4 +15,9 @@ class Category extends Model
         'code',
     ];
 
+    public function newQuery($excludeDeleted = true) {
+        return parent::newQuery()->orderBy('name');
+    }
+
+
 }
