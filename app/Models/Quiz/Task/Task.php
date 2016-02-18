@@ -55,4 +55,28 @@ class Task extends Model
     {
         return $this->finished_at->diffInMinutes($this->started_at);
     }
+
+    /**
+     * @return string
+     */
+    public function getProgressAttribute()
+    {
+        return round($this->userAnswers()->whereNotNull('answer_id')->count() / $this->userAnswers()->count() * 100);
+    }
+
+    /**
+     * @return string
+     */
+    public function getCurrentAttribute()
+    {
+        return $this->userAnswers()->whereNotNull('answer_id')->count() + 1;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTotalAttribute()
+    {
+        return $this->userAnswers()->count();
+    }
 }

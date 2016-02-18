@@ -295,6 +295,8 @@ return [
                 'sent_answers' => 'Sent answers: :answers',
                 'correct_answers' => 'Correct answers: :answers (:percents%)',
                 'details' => 'Started at: :started_at; Spent time: :spent_time minutes',
+                'progress' => 'Completed :progress%',
+                'progress-text' => 'Question :current of :total.',
                 'table' => [
                     'id' => 'ID',
                     'title' => 'Title',
