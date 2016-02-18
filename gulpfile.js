@@ -41,6 +41,8 @@ elixir(function(mix) {
       */
      .scripts([
         'plugin/sweetalert/sweetalert.min.js',
+        'plugin/countdown/countdown.min.js',
+        'plugin/moment/moment.min.js',
         'plugins.js',
         'frontend/app.js'
      ], 'public/js/frontend.js')

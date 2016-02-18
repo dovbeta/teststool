@@ -59,6 +59,19 @@ class Task extends Model
     /**
      * @return string
      */
+    public function getRemainSecondsAttribute()
+    {
+        $finishDate = $this->started_at->addMinutes($this->poll->time_limit);
+        if (Carbon::now()->lt($finishDate)) {
+            return $finishDate->diffInSeconds(Carbon::now());
+        } else {
+            return 0;
+        }
+    }
+
+    /**
+     * @return string
+     */
     public function getProgressAttribute()
     {
         return round($this->userAnswers()->whereNotNull('answer_id')->count() / $this->userAnswers()->count() * 100);
