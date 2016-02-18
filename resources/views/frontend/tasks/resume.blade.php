@@ -7,7 +7,7 @@
                     <p class="pull-left">{!! trans('labels.frontend.quiz.tasks.progress-text', ['current' => $task->current, 'total' => $task->total]) !!}</p>
                 </div>
                 <div class="col-md-4">
-                    <p id="countdown"></p>
+                    <p id="countdown" class="text-center"></p>
                 </div>
                 <div class="col-md-4">
                     <p class="pull-right">{!! trans('labels.frontend.quiz.tasks.progress', ['progress' => $task->progress]) !!}</p>
