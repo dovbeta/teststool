@@ -62,8 +62,10 @@ class Task extends Model
     public function getRemainSecondsAttribute()
     {
         $finishDate = $this->started_at->addMinutes($this->poll->time_limit);
-        if (Carbon::now()->lt($finishDate)) {
-            return $finishDate->diffInSeconds(Carbon::now());
+        $now = Carbon::now();
+
+        if ($now->lt($finishDate)) {
+            return $finishDate->diffInSeconds($now);
         } else {
             return 0;
         }
