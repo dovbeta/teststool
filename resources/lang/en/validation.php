@@ -189,6 +189,10 @@ return [
             'old_password' => 'Old Password',
             'new_password' => 'New Password',
             'new_password_confirmation' => 'New Password Confirmation',
+
+            'quiz' => [
+                'answer_id' => 'Answer'
+            ],
         ],
     ],
 
