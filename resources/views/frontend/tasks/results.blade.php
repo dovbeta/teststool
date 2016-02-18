@@ -11,7 +11,7 @@
                     <blockquote>
                         <p>{{ trans('labels.frontend.quiz.tasks.started_at', ['started_at' => $task->started_at->format('Y M d, H:i')]) }}</p>
                         <p>{{ trans('labels.frontend.quiz.tasks.finished_at', ['finished_at' => $task->finished_at->format('Y M d, H:i')]) }}</p>
-                        <p>{{ trans('labels.frontend.quiz.tasks.spent_time', ['spent_time' => $task->spent_time]) }}</p>
+                        <p>{{ trans_choice('labels.frontend.quiz.tasks.spent_time', $task->spent_time, ['spent_time' => $task->spent_time]) }}</p>
                     </blockquote>
                 </div>
                 <div class="col-md-6">
