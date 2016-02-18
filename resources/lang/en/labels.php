@@ -290,7 +290,7 @@ return [
                 'results_of' => 'Results of :poll',
                 'started_at' => 'Started at: :started_at',
                 'finished_at' => 'Finished at: :finished_at',
-                'spent_time' => 'Spent time: :spent_time minutes',
+                'spent_time' => 'Spent time: :spent_time minute | Spent time: :spent_time minutes',
                 'questions' => 'Total questions: :questions',
                 'sent_answers' => 'Sent answers: :answers',
                 'correct_answers' => 'Correct answers: :answers (:percents%)',
