@@ -26,7 +26,7 @@ class UpdateUserAnswerRequest extends Request
     public function rules()
     {
         return [
-            'answer_id' => 'required',
+            'answer_id' => 'required|exists:' . config('quiz.answers_table') .',id',
         ];
     }
 
