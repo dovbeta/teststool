@@ -55,7 +55,7 @@ class TaskController extends Controller
 
         if ($task->remain_seconds > 0 && $userAnswer = $this->tasks->getUnAnsweredUserAnswer($id)) {
             return view('frontend.tasks.resume')
-                ->withTask($this->tasks->find($id))
+                ->withTask($task)
                 ->withUserAnswer($userAnswer);
         } else {
             $this->tasks->finish($id);
