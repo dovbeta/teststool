@@ -29,10 +29,10 @@
                     <tbody>
                         @foreach ($task->userAnswers as $answer)
                             <tr>
-                                <td>{!! $answer->question->title !!}</td>
-                                <td>{!! $answer->question->description !!}</td>
+                                <td>{{ $answer->question->title }}</td>
+                                <td><pre>{{ $answer->question->description }}</pre></td>
                                 @if($answer->answer)
-                                <td class="{!! ($answer->answer->is_correct) ? 'correct' : 'invalid' !!}">{!! $answer->answer->title !!}</td>
+                                <td class="{!! ($answer->answer->is_correct) ? 'correct' : 'invalid' !!}">{{ $answer->answer->title }}</td>
                                 @else
                                 <td></td>
                                 @endif

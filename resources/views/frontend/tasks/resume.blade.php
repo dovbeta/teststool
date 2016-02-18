@@ -6,15 +6,15 @@
             <div class="panel panel-primary">
                 <div class="panel-heading">
                     <h3 class="panel-title">
-                        {!! $user_answer->question->title !!}
+                        {{ $user_answer->question->title }}
                     </h3>
                 </div>
                 <div class="panel-body">
-                    <p class="lead">{!! $user_answer->question->description !!}</p>
+                    <p class="lead"><pre>{{ $user_answer->question->description }}</pre></p>
                     @foreach ($user_answer->question->answers as $answer)
                         <div class="radio">
                             <label>
-                                {!! Form::radio("answer_id", $answer->id, $user_answer->answer ? $user_answer->answer->id == $answer->id : null) !!} {!! $answer->title !!}
+                                {!! Form::radio("answer_id", $answer->id, $user_answer->answer ? $user_answer->answer->id == $answer->id : null) !!} {{ $answer->title }}
                             </label>
                         </div>
                     @endforeach

@@ -20,11 +20,11 @@
                 @foreach($tasks as $task)
                     <tr>
                         <td>{!! $task->id !!}</td>
-                        <td>{!! $task->poll->title !!}</td>
-                        <td>{!! $task->updated_at->format('Y-m-d H:i') !!} ({!! $task->updated_at->diffForHumans() !!})</td>
-                        <td>{!! $task->poll->questions_number !!}</td>
-                        <td>{!! $task->poll->time_limit !!}</td>
-                        <td>{!! trans('labels.frontend.quiz.tasks.status.' . $task->status) !!}</td>
+                        <td>{{ $task->poll->title }}</td>
+                        <td>{{ $task->updated_at->format('Y-m-d H:i') }} ({{ $task->updated_at->diffForHumans() }})</td>
+                        <td>{{ $task->poll->questions_number }}</td>
+                        <td>{{ $task->poll->time_limit }}</td>
+                        <td>{{ trans('labels.frontend.quiz.tasks.status.' . $task->status) }}</td>
                         <td>{!! $task->action_buttons !!}</td>
                     </tr>
                 @endforeach

@@ -7830,6 +7830,10 @@ button.close {
 #pagination-container .pagination {
   margin: 0; }
 
+pre {
+  border: none;
+  background-color: transparent; }
+
 body.stop-scrolling {
   height: 100%;
   overflow: hidden; }

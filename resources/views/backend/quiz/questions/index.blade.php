@@ -35,9 +35,9 @@
                     <tbody>
                     @foreach ($questions as $question)
                         <tr>
-                            <td>{!! $question->title !!}</td>
-                            <td>{!! $question->description !!}</td>
-                            <td>{!! implode(', ', $question->categories->pluck('name')->all()) !!}</td>
+                            <td>{{ $question->title }}</td>
+                            <td><pre>{{ $question->description }}</pre></td>
+                            <td>{{ implode(', ', $question->categories->pluck('name')->all()) }}</td>
                             <td>{!! $question->action_buttons !!}</td>
                         </tr>
                     @endforeach
