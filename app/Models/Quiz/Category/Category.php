@@ -4,9 +4,9 @@ namespace App\Models\Quiz\Category;
 
 use App\Models\Quiz\Category\Traits\Attribute\CategoryAttribute;
 use App\Models\Quiz\Category\Traits\Relationship\CategoryRelationship;
-use Illuminate\Database\Eloquent\Model;
+use Baum\Node;
 
-class Category extends Model
+class Category extends Node
 {
     use CategoryAttribute, CategoryRelationship;
 
