@@ -21,14 +21,22 @@ class UpdateUserAnswerRequest extends Request
     }
 
     /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array
+     * {@inheritDoc}
      */
     public function rules()
     {
         return [
-            'answer_id' => 'required',
+            'answer_id' => 'required|exists:' . config('quiz.answers_table') .',id',
+        ];
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function attributes()
+    {
+        return [
+            'answer_id' => trans('validation.attributes.frontend.quiz.answer_id'),
         ];
     }
 }
