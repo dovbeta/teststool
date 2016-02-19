@@ -4,6 +4,13 @@
 {!! Html::style('css/backend/plugin/nestable/jquery.nestable.css') !!}
 @stop
 
+@section('page-header')
+    <h1>
+        {{ trans('labels.backend.quiz.categories.management') }}
+        <small>{{ trans('labels.backend.quiz.categories.hierarchy') }}</small>
+    </h1>
+@endsection
+
 @section('content')
     <div class="box box-success">
         <div class="box-header with-border">
