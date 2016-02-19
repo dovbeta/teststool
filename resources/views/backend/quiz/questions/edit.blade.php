@@ -9,6 +9,10 @@
     </h1>
 @endsection
 
+@section('after-styles-end')
+    {!! Html::style('css/backend/plugin/jstree/themes/default/style.min.css') !!}
+@stop
+
 @section('content')
     {!! Form::model($question, ['route' => ['admin.quiz.questions.update', $question->id], 'class' => 'form-horizontal', 'role' => 'form', 'method' => 'PATCH']) !!}
 
@@ -68,19 +72,26 @@
                 <label class="col-lg-2 control-label">{{ trans('validation.attributes.backend.quiz.questions.categories') }}</label>
                 <div class="col-lg-10">
                     @if (count($categories))
-                        @foreach (array_chunk($categories->toArray(), 10) as $category)
-                            <div class="col-lg-3">
-                                <ul style="margin:0;padding:0;list-style:none;">
-                                    @foreach ($category as $cat)
-                                        <li><input type="checkbox" value="{{$cat['id']}}" name="question_categories[]" {{in_array($cat['id'], $question_categories) ? 'checked' : ""}} id="category-{{$cat['id']}}">
-                                            <label for="category-{{$cat['id']}}">
-                                                {!! $cat['name'] !!} ({!! $cat['code'] !!})
-                                            </label>
-                                        </li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                        @endforeach
+                        <div id="categories-tree">
+                            <ul>
+                                @foreach ($categories as $category)
+                                    <li id="cat-{!! $category->id !!}">{!! $category->name !!}
+                                        @if ($category->children()->count())
+                                            <ul>
+                                                @foreach ($category->children as $child)
+                                                    <li id="cat-{!! $child->id !!}">{!! $child->name !!}</li>
+                                                @endforeach
+                                            </ul>
+                                        @endif
+                                    </li>
+                                @endforeach
+                            </ul>
+                        </div>
+                        <div id="question-categories">
+                            @foreach ($question_categories as $question_category)
+                                <input type="hidden" value="{{$question_category}}" name="question_categories[]">
+                            @endforeach
+                        </div>
                     @else
                         {{ trans('labels.backend.quiz.questions.no_other_categories') }}
                     @endif
@@ -102,8 +113,21 @@
         </div><!-- /.box-body -->
     </div><!--box-->
 
-
-
-
     {!! Form::close() !!}
+@stop
+
+@section('after-scripts-end')
+    {!! Html::script('js/backend/plugin/jstree/jstree.min.js') !!}
+    {!! Html::script('js/backend/quiz/questions/script.js') !!}
+
+    <script>
+        var $tree = $tree || $('#categories-tree');
+        var $question_categories = $question_categories || $('#question-categories');
+
+        $(function() {
+            @foreach ($question_categories as $question_category)
+                $tree.jstree('check_node', '#cat-{!! $question_category !!}');
+            @endforeach
+        });
+    </script>
 @stop

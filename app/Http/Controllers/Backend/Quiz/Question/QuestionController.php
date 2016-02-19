@@ -39,9 +39,10 @@ class QuestionController extends Controller
     }
 
     /**
+     * @param $category_id
      * @return mixed
      */
-    public function index($category_id = 0) {
+    public function index($category_id = null) {
         return view('backend.quiz.questions.index')
             ->withQuestions($this->questions->getQuestionsPaginated(config('quiz.questions.default_per_page'), $category_id))
             ->withCategories($this->categories->getAllCategories())
@@ -52,11 +53,11 @@ class QuestionController extends Controller
      * @param  CreateQuestionRequest $request
      * @return mixed
      */
-    public function create(CreateQuestionRequest $request, $category_id = 0)
+    public function create(CreateQuestionRequest $request, $category_id = null)
     {
         return view('backend.quiz.questions.create')
             ->withCategories($this->categories->getAllCategories())
-            ->withCategoryId($category_id);
+            ->withQuestionCategories($category_id ? [$category_id] : []);
     }
 
     /**
@@ -73,7 +74,7 @@ class QuestionController extends Controller
         $goToNew = $request->get('new', false);
         if ($goToNew) {
             if (count($request->get('question_categories')) == 1) {
-                return redirect()->route('quiz.questions.create.category', $request->get('question_categories')[0])->withFlashSuccess(trans('alerts.backend.questions.created'));
+                return redirect()->route('admin.quiz.questions.create', $request->get('question_categories')[0])->withFlashSuccess(trans('alerts.backend.questions.created'));
             } else {
                 return redirect()->route('admin.quiz.questions.create')->withFlashSuccess(trans('alerts.backend.questions.created'));
             }
@@ -94,7 +95,7 @@ class QuestionController extends Controller
             ->withQuestion($question)
             ->withQuestionCategories($question->categories()->lists('id')->all())
             ->withQuestionAnswers($question->answers()->orderBy('id')->get())
-            ->withCategories($this->categories->getAllCategories());
+            ->withCategories($this->categories->getRootsCategories());
     }
 
     /**

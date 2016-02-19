@@ -11955,6 +11955,9 @@ pre {
   border: none;
   background-color: transparent; }
 
+.dd-item {
+  cursor: move; }
+
 /*
  * General: Miscellaneous
  * ----------------------
