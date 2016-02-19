@@ -16,7 +16,7 @@
 <div class="clearfix"></div>
 
 <div id="demo" class="collapse {!! ((isset($user) && $user) || (isset($poll) && $poll) || (isset($status) && $status)) ? 'in' : '' !!}">
-    {!! Form::open(['route' => 'admin.quiz.tasks.filtered', 'class' => 'form-horizontal', 'role' => 'form', 'method' => 'post', 'id' => 'filters-form']) !!}
+    {!! Form::open(['route' => 'admin.quiz.tasks.index', 'class' => 'form-horizontal', 'role' => 'form', 'method' => 'post', 'id' => 'filters-form']) !!}
     <div class="row">
         <div class="col-md-4">
             <div class="box-body">
