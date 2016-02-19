@@ -128,6 +128,7 @@ return [
             'categories' => [
                 'management' => 'Categories management',
                 'all' => 'All categories',
+                'hierarchy' => 'Categories hierarchy',
                 'create' => 'Create category',
                 'edit' => 'Edit category',
 

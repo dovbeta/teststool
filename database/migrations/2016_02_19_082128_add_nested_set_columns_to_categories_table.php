@@ -31,6 +31,7 @@ class AddNestedSetColumnsToCategoriesTable extends Migration {
    */
   public function down() {
     Schema::table(config('quiz.categories_table'), function (Blueprint $table) {
+
       $table->dropColumn('parent_id');
       $table->dropColumn('lft');
       $table->dropColumn('rgt');

@@ -57,6 +57,7 @@ return [
             'categories' => [
                 'title' => 'Categories',
                 'all' => 'All Categories',
+                'hierarchy' => 'Categories hierarchy',
                 'create' => 'Create Category',
                 'edit' => 'Edit Category',
                 'main' => 'Categories',

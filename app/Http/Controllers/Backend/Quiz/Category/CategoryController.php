@@ -7,6 +7,7 @@ use App\Http\Requests\Backend\Quiz\Category\DeleteCategoryRequest;
 use App\Http\Requests\Backend\Quiz\Category\EditCategoryRequest;
 use App\Http\Requests\Backend\Quiz\Category\StoreCategoryRequest;
 use App\Http\Requests\Backend\Quiz\Category\UpdateCategoryRequest;
+use App\Http\Requests\Backend\Quiz\Category\SortCategoriesRequest;
 use App\Models\Quiz\Category\Category;
 use App\Repositories\Backend\Category\CategoryContract;
 
@@ -36,6 +37,15 @@ class CategoryController extends Controller
     public function index() {
         return view('backend.quiz.categories.index')
             ->withCategories($this->categories->getCategoriesPaginated(config('quiz.categories.default_per_page'), 1));
+    }
+
+    /**
+     * @return mixed
+     */
+    public function hierarchy()
+    {
+        return view('backend.quiz.categories.hierarchy')
+            ->withCategories($this->categories->getRootsCategories());
     }
 
     /**
@@ -91,4 +101,13 @@ class CategoryController extends Controller
         return redirect()->back()->withFlashSuccess(trans('alerts.backend.categories.deleted'));
     }
 
+    /**
+     * @param  SortCategoriesRequest      $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function updateHierarchy(SortCategoriesRequest $request)
+    {
+        $this->categories->updateHierarchy($request->get('data'));
+        return response()->json(['status' => 'OK']);
+    }
 }

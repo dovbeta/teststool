@@ -10,14 +10,20 @@ class Category extends Node
 {
     use CategoryAttribute, CategoryRelationship;
 
+    /**
+     * {@inheritDoc}
+     */
+    protected $orderColumn = 'name';
+
+    /**
+     * {@inheritDoc}
+     */
     protected $fillable = [
         'name',
         'code',
     ];
 
     public function newQuery($excludeDeleted = true) {
-        return parent::newQuery()->orderBy('name');
+        return parent::newQuery()->orderBy($this->getOrderColumnName());
     }
-
-
 }

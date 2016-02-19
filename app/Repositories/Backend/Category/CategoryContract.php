@@ -21,6 +21,11 @@ interface CategoryContract
     public function getCategoriesPaginated($per_page);
 
     /**
+     * @return mixed
+     */
+    public function getRootsCategories();
+
+    /**
      * List all categories
      *
      * @return mixed
@@ -39,5 +44,11 @@ interface CategoryContract
      * @return mixed
      */
     public function destroy($id);
+
+    /**
+     * @param  $input
+     * @return mixed
+     */
+    public function updateHierarchy($input);
 
 }

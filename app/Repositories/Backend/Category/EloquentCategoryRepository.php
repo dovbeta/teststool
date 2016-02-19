@@ -39,6 +39,14 @@ class EloquentCategoryRepository implements CategoryContract
     }
 
     /**
+     * @return mixed
+     */
+    public function getRootsCategories()
+    {
+        return Category::roots()->get();
+    }
+
+    /**
      * @param  $input
      * @throws GeneralException
      * @return bool
@@ -100,5 +108,33 @@ class EloquentCategoryRepository implements CategoryContract
         }
 
         throw new GeneralException(trans('exceptions.backend.quiz.categories.delete_error'));
+    }
+
+    /**
+     * @param  $hierarchy
+     * @return bool
+     */
+    public function updateHierarchy($hierarchy)
+    {
+        $saveHierarchyItemChildren = function ($category, $hierarchyItem) use (&$saveHierarchyItemChildren){
+            if (isset($hierarchyItem['children']) && count($hierarchyItem['children'])) {
+                foreach ($hierarchyItem['children'] as $child) {
+                    $childCategory = $this
+                        ->findOrThrowException((int) $child['id'])
+                        ->makeChildOf($category);
+
+                    $saveHierarchyItemChildren($childCategory, $child);
+                }
+            }
+        };
+
+        foreach ($hierarchy as $hierarchyItem) {
+            $category = $this->findOrThrowException((int) $hierarchyItem['id'])
+                ->makeRoot();
+
+            $saveHierarchyItemChildren($category, $hierarchyItem);
+        }
+
+        return true;
     }
 }
