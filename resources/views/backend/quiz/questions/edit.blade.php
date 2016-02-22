@@ -75,15 +75,7 @@
                         <div id="categories-tree">
                             <ul>
                                 @foreach ($categories as $category)
-                                    <li id="cat-{!! $category->id !!}">{!! $category->name !!}
-                                        @if ($category->children()->count())
-                                            <ul>
-                                                @foreach ($category->children as $child)
-                                                    <li id="cat-{!! $child->id !!}">{!! $child->name !!}</li>
-                                                @endforeach
-                                            </ul>
-                                        @endif
-                                    </li>
+                                    @include('backend.quiz.questions.partials.category-children', ['category' => $category])
                                 @endforeach
                             </ul>
                         </div>

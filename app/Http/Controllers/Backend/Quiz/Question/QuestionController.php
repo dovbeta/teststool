@@ -56,7 +56,7 @@ class QuestionController extends Controller
     public function create(CreateQuestionRequest $request, $category_id = null)
     {
         return view('backend.quiz.questions.create')
-            ->withCategories($this->categories->getAllCategories())
+            ->withCategories($this->categories->getRootsCategories())
             ->withQuestionCategories($category_id ? [$category_id] : []);
     }
 
