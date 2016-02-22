@@ -57,7 +57,7 @@ class QuestionController extends Controller
     {
         return view('backend.quiz.questions.create')
             ->withCategories($this->categories->getRootsCategories())
-            ->withQuestionCategories($category_id ? [$category_id] : []);
+            ->withQuestionCategories(old('question_categories') ?: ($category_id ? [$category_id] : []));
     }
 
     /**
@@ -93,7 +93,7 @@ class QuestionController extends Controller
         $question = $this->questions->findOrThrowException($id);
         return view('backend.quiz.questions.edit')
             ->withQuestion($question)
-            ->withQuestionCategories($question->categories()->lists('id')->all())
+            ->withQuestionCategories(old('question_categories') ?: $question->categories()->lists('id')->all())
             ->withQuestionAnswers($question->answers()->orderBy('id')->get())
             ->withCategories($this->categories->getRootsCategories());
     }
