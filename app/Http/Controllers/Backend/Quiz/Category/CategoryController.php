@@ -36,15 +36,6 @@ class CategoryController extends Controller
      */
     public function index() {
         return view('backend.quiz.categories.index')
-            ->withCategories($this->categories->getCategoriesPaginated(config('quiz.categories.default_per_page'), 1));
-    }
-
-    /**
-     * @return mixed
-     */
-    public function hierarchy()
-    {
-        return view('backend.quiz.categories.hierarchy')
             ->withCategories($this->categories->getRootsCategories());
     }
 

@@ -35,9 +35,18 @@ trait CategoryAttribute
     /**
      * @return string
      */
+    public function getQuestionsButtonAttribute()
+    {
+        return '<a href="' . route('quiz.questions.of-category', $this->id) . '" class="btn btn-xs btn-success"><i class="fa" data-toggle="tooltip" data-placement="top" title="' . trans('buttons.backend.quiz.categories.questions') . '">' . $this->questions()->count() . '</i></a> ';
+    }
+
+    /**
+     * @return string
+     */
     public function getActionButtonsAttribute()
     {
-        return $this->getEditButtonAttribute() .
+        return $this->getQuestionsButtonAttribute() .
+        $this->getEditButtonAttribute() .
         $this->getDeleteButtonAttribute();
     }
 }

@@ -5,7 +5,6 @@
           </button>
           <ul class="dropdown-menu" role="menu">
             <li><a href="{{ route('admin.quiz.categories.index') }}">{{ trans('menus.backend.quiz.categories.all') }}</a></li>
-            <li><a href="{{ route('admin.quiz.categories.hierarchy') }}">{{ trans('menus.backend.quiz.categories.hierarchy') }}</a></li>
 
             @permission('create-users')
                 <li><a href="{{ route('admin.quiz.categories.create') }}">{{ trans('menus.backend.quiz.categories.create') }}</a></li>

@@ -2,6 +2,10 @@
 
 @section ('title', trans('labels.backend.quiz.categories.management'))
 
+@section('after-styles-end')
+    {!! Html::style('css/backend/plugin/nestable/jquery.nestable.css') !!}
+@stop
+
 @section('page-header')
     <h1>
         {{ trans('labels.backend.quiz.categories.management') }}
@@ -11,7 +15,7 @@
 @section('content')
     <div class="box box-success">
         <div class="box-header with-border">
-            <h3 class="box-title">{{ trans('labels.backend.quiz.categories.all') }}</h3>
+            <h3 class="box-title">{{ trans('labels.backend.quiz.categories.hierarchy') }}</h3>
 
             <div class="box-tools pull-right">
                 @include('backend.quiz.categories.partials.header-buttons')
@@ -19,40 +23,43 @@
         </div><!-- /.box-header -->
 
         <div class="box-body">
-            <div class="table-responsive">
-                <table class="table table-striped table-bordered table-hover">
-                    <thead>
-                    <tr>
-                        <th>{{ trans('labels.backend.quiz.categories.table.id') }}</th>
-                        <th>{{ trans('labels.backend.quiz.categories.table.name') }}</th>
-                        <th>{{ trans('labels.backend.quiz.categories.table.code') }}</th>
-                        <th>{{ trans('labels.backend.quiz.categories.table.questions') }}</th>
-                        <th>{{ trans('labels.general.actions') }}</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($categories as $category)
-                            <tr>
-                                <td>{!! $category->id !!}</td>
-                                <td>{!! $category->name !!}</td>
-                                <td>{!! $category->code !!}</td>
-                                <td>{!! $category->questions->count() !!}</td>
-                                <td>{!! $category->action_buttons !!}</td>
-                            </tr>
-                        @endforeach
-                    </tbody>
-                </table>
-            </div>
-
-            <div class="pull-left">
-                {!! $categories->total() !!} {{ trans_choice('labels.backend.quiz.categories.table.total', $categories->total()) }}
-            </div>
-
-            <div class="pull-right">
-                {!! $categories->render() !!}
-            </div>
+            <div class="dd category-hierarchy">
+                <ol class="dd-list">
+                    @foreach ($categories as $category)
+                        @include('backend.quiz.categories.partials.category-children', ['category' => $category])
+                    @endforeach
+                </ol>
+            </div><!--master-list-->
 
             <div class="clearfix"></div>
         </div><!-- /.box-body -->
     </div><!--box-->
+@stop
+
+@section('after-scripts-end')
+    {!! Html::script('js/backend/plugin/nestable/jquery.nestable.js') !!}
+
+    <script>
+        $(function() {
+            var hierarchy = $('.category-hierarchy');
+            hierarchy.nestable();
+
+            hierarchy.on('change', function() {
+                $.ajax({
+                    url : "{!! route('admin.quiz.categories.update-hierarchy') !!}",
+                    type: "post",
+                    data : {data:hierarchy.nestable('serialize')},
+                    success: function(data) {
+                        if (data.status == "OK")
+                            toastr.success("{!! trans('strings.backend.access.permissions.groups.hierarchy_saved') !!}");
+                        else
+                            toastr.error("{!! trans('auth.unknown') !!}.");
+                    },
+                    error: function (jqXHR, textStatus, errorThrown) {
+                        toastr.error("{!! trans('auth.unknown') !!}: " + errorThrown);
+                    }
+                });
+            });
+        });
+    </script>
 @stop

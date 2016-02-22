@@ -30,6 +30,9 @@ return [
                 'results' => 'Task results',
                 'filters' => 'Filters',
             ],
+            'categories' => [
+                'questions' => 'Questions'
+            ]
         ],
     ],
 
