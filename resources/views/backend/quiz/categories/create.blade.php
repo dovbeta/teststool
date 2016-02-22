@@ -25,14 +25,14 @@
                 <div class="form-group">
                     {!! Form::label('name', trans('validation.attributes.backend.quiz.categories.name'), ['class' => 'col-lg-2 control-label']) !!}
                     <div class="col-lg-10">
-                        {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => trans('validation.attributes.backend.quiz.categories.name')]) !!}
+                        {!! Form::text('name', null, ['id' => "name-field",'class' => 'form-control', 'placeholder' => trans('validation.attributes.backend.quiz.categories.name')]) !!}
                     </div>
                 </div><!--form control-->
 
                 <div class="form-group">
                     {!! Form::label('code', trans('validation.attributes.backend.quiz.categories.code'), ['class' => 'col-lg-2 control-label']) !!}
                     <div class="col-lg-10">
-                        {!! Form::text('code', null, ['class' => 'form-control', 'placeholder' => trans('validation.attributes.backend.quiz.categories.code')]) !!}
+                        {!! Form::text('code', null, ['id' => 'code-field', 'class' => 'form-control', 'placeholder' => trans('validation.attributes.backend.quiz.categories.code')]) !!}
                     </div>
                 </div><!--form control-->
             </div><!-- /.box-body -->
@@ -52,4 +52,14 @@
         </div><!--box-->
 
     {!! Form::close() !!}
+@stop
+
+@section('after-scripts-end')
+    {!! Html::script('js/backend/plugin/slugify/jquery.slugify.js') !!}
+
+    <script>
+        $(function() {
+            $('#code-field').slugify('#name-field');
+        });
+    </script>
 @stop
