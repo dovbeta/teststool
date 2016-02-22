@@ -7,6 +7,7 @@ use App\Http\Requests\Backend\Quiz\Question\DeleteQuestionRequest;
 use App\Http\Requests\Backend\Quiz\Question\EditQuestionRequest;
 use App\Http\Requests\Backend\Quiz\Question\StoreQuestionRequest;
 use App\Http\Requests\Backend\Quiz\Question\UpdateQuestionRequest;
+use App\Models\Quiz\Category\Category;
 use App\Repositories\Backend\Category\CategoryContract;
 use App\Repositories\Backend\Question\QuestionContract;
 
@@ -42,10 +43,11 @@ class QuestionController extends Controller
      * @param $category_id
      * @return mixed
      */
-    public function index($category_id = null) {
+    public function index($category_id = null)
+    {
         return view('backend.quiz.questions.index')
             ->withQuestions($this->questions->getQuestionsPaginated(config('quiz.questions.default_per_page'), $category_id))
-            ->withCategories($this->categories->getAllCategories())
+            ->withCategories(Category::getNestedList('name', null, '-'))
             ->withCategory($category_id);
     }
 

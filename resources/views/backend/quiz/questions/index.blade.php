@@ -12,10 +12,9 @@
     <div class="box box-success">
         <div class="box-header with-border">
             <h3 class="box-title">{{ trans('labels.backend.quiz.questions.all') }}</h3>
-            {!! Form::select('category', $categories->lists('named_depth', 'id'), $category, ['class' => 'form-control', 'placeholder' => trans('validation.attributes.backend.quiz.questions.filter_by_category'), 'onchange' => 'window.location.href = $(this).val() ? "/admin/quiz/questions/category/"+$(this).val() : "/admin/quiz/questions"']) !!}
+            {!! Form::select('category', $categories, $category, ['class' => 'form-control', 'placeholder' => trans('validation.attributes.backend.quiz.questions.filter_by_category'), 'onchange' => 'window.location.href = $(this).val() ? "/admin/quiz/questions/category/"+$(this).val() : "/admin/quiz/questions"']) !!}
 
             <div class="box-tools pull-right ">
-
                 @include('backend.quiz.questions.partials.header-buttons')
             </div>
         </div>

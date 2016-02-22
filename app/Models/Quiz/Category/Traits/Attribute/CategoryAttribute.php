@@ -43,14 +43,6 @@ trait CategoryAttribute
     /**
      * @return string
      */
-    public function getNamedDepthAttribute()
-    {
-        return str_repeat('-', $this->depth) . ' ' . $this->name;
-    }
-
-    /**
-     * @return string
-     */
     public function getActionButtonsAttribute()
     {
         return $this->getQuestionsButtonAttribute() .
