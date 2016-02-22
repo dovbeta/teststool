@@ -31,7 +31,8 @@ return [
                 'filters' => 'Filters',
             ],
             'categories' => [
-                'questions' => 'Questions'
+                'questions' => 'Questions',
+                'all-questions' => 'All questions',
             ]
         ],
     ],

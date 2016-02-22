@@ -39,4 +39,12 @@ trait CategoryRelationship
     {
         return $this->belongsToMany(Question::class);
     }
+
+    /**
+     * @return mixed
+     */
+    public function allQuestions() {
+        return Question::leftJoin(config('quiz.category_question_table'), config('quiz.questions_table') . '.id', '=', config('quiz.category_question_table') . '.question_id')
+            ->whereIn(config('quiz.category_question_table'). '.category_id', $this->getDescendantsAndSelf(['id'])->pluck(['id'])->all());
+    }
 }

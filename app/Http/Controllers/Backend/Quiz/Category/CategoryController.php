@@ -66,6 +66,7 @@ class CategoryController extends Controller
     public function edit($id, EditCategoryRequest $request)
     {
         $category = $this->categories->findOrThrowException($id);
+        var_dump((array) $category->allQuestions());
         return view('backend.quiz.categories.edit')
             ->withCategory($category);
     }

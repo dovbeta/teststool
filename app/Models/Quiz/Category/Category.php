@@ -4,6 +4,7 @@ namespace App\Models\Quiz\Category;
 
 use App\Models\Quiz\Category\Traits\Attribute\CategoryAttribute;
 use App\Models\Quiz\Category\Traits\Relationship\CategoryRelationship;
+use App\Models\Quiz\Question\Question;
 use Baum\Node;
 
 class Category extends Node
