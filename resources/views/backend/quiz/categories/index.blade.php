@@ -23,13 +23,22 @@
         </div><!-- /.box-header -->
 
         <div class="box-body">
-            <div class="dd category-hierarchy">
-                <ol class="dd-list">
-                    @foreach ($categories as $category)
-                        @include('backend.quiz.categories.partials.category-children', ['category' => $category])
-                    @endforeach
-                </ol>
-            </div><!--master-list-->
+
+            <div class="col-lg-6">
+                <div class="dd category-hierarchy">
+                    <ol class="dd-list">
+                        @foreach ($categories as $category)
+                            @include('backend.quiz.categories.partials.category-children', ['category' => $category])
+                        @endforeach
+                    </ol>
+                </div><!--master-list-->
+            </div>
+
+            <div class="col-lg-6">
+                <div class="alert alert-info">
+                    <i class="fa fa-info-circle"></i> {{ trans('strings.backend.quiz.categories.edit_explanation') }}
+                </div><!--alert info-->
+            </div>
 
             <div class="clearfix"></div>
         </div><!-- /.box-body -->

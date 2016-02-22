@@ -32,6 +32,12 @@ return [
             ],
         ],
 
+        'quiz' => [
+            'categories' => [
+                'edit_explanation' => 'If you performed operations in the hierarchy section without refreshing this page, you will need to refresh to reflect the changes of question numbers.',
+            ],
+        ],
+
         'dashboard' => [
             'title' => 'Administrative Dashboard',
             'welcome' => 'Welcome',
