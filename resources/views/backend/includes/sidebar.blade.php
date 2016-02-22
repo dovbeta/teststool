@@ -42,7 +42,7 @@
                 </a>
                 <ul class="treeview-menu {{ Active::pattern('admin/quiz*', 'menu-open') }}" style="display: none; {{ Active::pattern('admin/quiz*', 'display: block;') }}">
                     <li class="{{ Active::pattern('admin/quiz/categories') }}">
-                        <a href="{!!url('admin/quiz/categories/hierarchy')!!}"><span>{{ trans('menus.backend.quiz.categories.title') }}</span></a>
+                        <a href="{!!url('admin/quiz/categories')!!}"><span>{{ trans('menus.backend.quiz.categories.title') }}</span></a>
                     </li>
                     <li class="{{ Active::pattern('admin/quiz/questions') }}">
                         <a href="{!!url('admin/quiz/questions')!!}"><span>{{ trans('menus.backend.quiz.questions.title') }}</span></a>
