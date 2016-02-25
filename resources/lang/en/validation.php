@@ -147,6 +147,7 @@ return [
                 'categories' => [
                     'name' => 'Name',
                     'code' => 'Code',
+                    'parent_id' => 'Parent category',
                 ],
 
                 'questions' => [

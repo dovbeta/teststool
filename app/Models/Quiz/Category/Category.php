@@ -14,7 +14,7 @@ class Category extends Node
     /**
      * {@inheritDoc}
      */
-    protected $orderColumn = 'name';
+//    protected $orderColumn = 'name';
 
     /**
      * {@inheritDoc}
@@ -24,7 +24,7 @@ class Category extends Node
         'code',
     ];
 
-    public function newQuery($excludeDeleted = true) {
-        return parent::newQuery()->orderBy($this->getOrderColumnName());
-    }
+//    public function newQuery($excludeDeleted = true) {
+//        return parent::newQuery()->orderBy('parent_id')->orderBy('name');
+//    }
 }

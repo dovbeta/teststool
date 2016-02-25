@@ -71,6 +71,11 @@ class EloquentCategoryRepository implements CategoryContract
         $category                = new Category();
         $category->name          = $input['name'];
         $category->code          = $input['code'];
+        if (!$input['parent_id']) {
+            $category->parent_id = null;
+        } else {
+            $category->parent_id = $input['parent_id'];
+        }
         return $category;
     }
 
@@ -87,6 +92,9 @@ class EloquentCategoryRepository implements CategoryContract
     public function update($id, $request)
     {
         $category = $this->findOrThrowException($id);
+        if (! $request->get('parent_id')) {
+            $category->parent_id = null;
+        }
 
         if ($category->update($request->toArray())) {
             return true;

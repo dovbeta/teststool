@@ -47,7 +47,7 @@ class QuestionController extends Controller
     {
         return view('backend.quiz.questions.index')
             ->withQuestions($this->questions->getQuestionsPaginated(config('quiz.questions.default_per_page'), $category_id))
-            ->withCategories(Category::getNestedList('name', null, '-'))
+            ->withCategories(Category::getNestedList('name', null, ' - '))
             ->withCategory($category_id);
     }
 

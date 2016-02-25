@@ -45,7 +45,8 @@ class CategoryController extends Controller
      */
     public function create(CreateCategoryRequest $request)
     {
-        return view('backend.quiz.categories.create');
+        return view('backend.quiz.categories.create')
+            ->withCategories(Category::getNestedList('name', null, ' - '));
     }
 
     /**
@@ -66,8 +67,8 @@ class CategoryController extends Controller
     public function edit($id, EditCategoryRequest $request)
     {
         $category = $this->categories->findOrThrowException($id);
-        var_dump((array) $category->allQuestions());
         return view('backend.quiz.categories.edit')
+            ->withCategories(Category::getNestedList('name', null, ' - '))
             ->withCategory($category);
     }
 
