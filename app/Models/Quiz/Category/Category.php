@@ -24,6 +24,7 @@ class Category extends Node
         'code',
     ];
 
+
 //    public function newQuery($excludeDeleted = true) {
 //        return parent::newQuery()->orderBy('parent_id')->orderBy('name');
 //    }
