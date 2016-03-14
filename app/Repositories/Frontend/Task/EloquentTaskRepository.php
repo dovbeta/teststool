@@ -5,6 +5,7 @@ namespace App\Repositories\Frontend\Task;
 use App\Exceptions\GeneralException;
 use App\Http\Requests\Frontend\Quiz\UpdateUserAnswerRequest;
 use App\Models\Quiz\Question\Question;
+use App\Models\Quiz\Category\Category;
 use App\Models\Quiz\Task\Task;
 use App\Models\Quiz\UserAnswer\UserAnswer;
 use Carbon\Carbon;
@@ -55,12 +56,17 @@ class EloquentTaskRepository implements TaskContract
             $questionsNumber = $poll->questions_number;
             $questionsCategory = $poll->category;
 
-            /** @var Collection $questions */
-            $questions = $questionsCategory
-                ->questions()
-                ->orderByRaw("RAND()")
-                ->take($questionsNumber)
-                ->get();
+            /** @var Category $questionsCategory */
+            $categories = $questionsCategory->getDescendantsAndSelf()->pluck('id');
+
+            $questions = Question::with('categories')->whereHas('categories', function($q) use ($categories)
+            {
+                $q->whereIn('categories.id', $categories);
+            })
+            ->orderByRaw("RAND()")
+            ->take($questionsNumber)
+            ->get();
+
 
             if ($questions->count() == $questionsNumber) {
                 /** @var Question $question */
